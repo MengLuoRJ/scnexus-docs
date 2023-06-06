@@ -1,5 +1,14 @@
-# SCNexus
-Nexus Application for SC Community
+<div align="center">
+  <!-- <a href="">
+    <img src="" width="150">
+  </a> -->
+  <h1>SCNexus</h1>
+  <p>Nexus Application for SC Community</p>
+  <p>
+    ENGLISH README | 
+    <a href="https://github.com/MengLuoRJ/scnexus/blob/main/README_zh.md">中文自述介绍</a>
+  </p>
+</div>
 
 ## Features
 
