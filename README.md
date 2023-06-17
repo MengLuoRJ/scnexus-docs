@@ -6,7 +6,7 @@
   <p>Nexus Application for SC Community</p>
   <p>
     ENGLISH README | 
-    <a href="https://github.com/MengLuoRJ/scnexus/blob/main/README_zh.md">中文自述介绍</a>
+    <a href="https://github.com/MengLuoRJ/scnexus/blob/main/README.zhCN.md">中文自述介绍</a>
   </p>
 </div>
 

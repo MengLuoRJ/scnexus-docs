@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "@unocss/preset-web-fonts": "^0.53.1",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "unocss": "^0.53.1",
+    "vitepress": "1.0.0-beta.2",
+    "vue": "^3.3.4"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  }
+}
