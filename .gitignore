@@ -1,6 +1,9 @@
+# Rollup Visualizer
+stats.html
+
 # Vitepress Dev
-.vitepress/dist
-.vitepress/cache
+docs/.vitepress/dist
+docs/.vitepress/cache
 
 # Env
 *.env

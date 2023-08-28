@@ -12,23 +12,23 @@ hero:
     width: 200
   actions:
     - theme: brand
+      text: 快速开始
+      link: /guide/
+    - theme: alt
       text: 查看文档
-      link: /markdown-examples
+      link: /rfcs/
     - theme: alt
-      text: 立即使用
-      link: https://scnexus.aiur.tech/
-    - theme: alt
-      text: 查看 GitHub
+      text: GitHub
       link: https://github.com/MengLuoRJ/scnexus
 
 features:
   - title: "富信息展示"
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: featuring maps and mods with the more rich and useable information display for authors and content creators.
   - title: "地图/模组评分与评论"
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: coming soon
   - title: "自制战役分发与管理"
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: supporting SCNexus Custom Campaign Cloud Deliver & Package Standard, CCM Package Standard and native files.
   - title: "云同步存档"
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: providing cloud sync bank service for local native campaign, local custom campaign and arcade maps that joined the Project Arcade Cloud Bank Service.
 ---
 
