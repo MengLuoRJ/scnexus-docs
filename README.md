@@ -10,6 +10,14 @@
   </p>
 </div>
 
+## Getting Started
+
+### Get the Application from Microsoft Store
+
+<a href="https://apps.microsoft.com/store/detail/9PL7DCMCN13X?launch=true&mode=full">
+	<img src="https://get.microsoft.com/images/zh-CN%20dark.svg"/>
+</a>
+
 ## Features
 
 - **Richable Information Display**, featuring maps and mods with the more rich and useable information display for authors and content creators.
@@ -20,10 +28,10 @@
 
 ## Packages
 
-| Name | Repository | Description | 
-| ----------- | ----------- | --------- |
-| SCNexus Website | - | website with features for views and interactions |
-| SCNexus Server | - | service server backend  |
-| SCNexus Client | - | desktop client providing main function and features |
-| Project Arcade Service | - | Deprecated, integrated into SCNexus |
+| Name                   | Description                                         |
+| ---------------------- | --------------------------------------------------- |
+| SCNexus Website        | website with features for views and interactions    |
+| SCNexus Server         | service server backend                              |
+| SCNexus Client         | desktop client providing main function and features |
+| Project Arcade Service | Deprecated, integrated into SCNexus                 |
 

@@ -5,7 +5,11 @@
 
 ## 获取应用程序
 
+### Microsoft Store
 
+<a href="https://apps.microsoft.com/store/detail/9PL7DCMCN13X?launch=true&mode=full">
+	<img src="https://get.microsoft.com/images/zh-CN%20dark.svg"/>
+</a>
 
 ## 交流社区
 
