@@ -9,7 +9,7 @@ export default defineConfig({
     logo: "/logo_scnexus_large_512.png",
     nav: [
       { text: "指南", link: "/guide/" },
-      { text: "参考文档", link: "/rfcs/" },
+      { text: "参考文档", link: "/reference/" },
       { text: "使用条款", link: "/terms.html" },
       { text: "隐私政策", link: "/privacy-policy.html" },
     ],

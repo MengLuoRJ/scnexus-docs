@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "snid": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 32
+    },
+    "description": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+    },
+    "author": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Campaign",
+        "Customize"
+      ]
+    },
+    "campaign": {
+      "type": "string"
+    },
+    "campaignBank": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "social": {
+      "type": "object",
+      "properties": {
+        "general": {
+          "type": "string"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "discord": {
+          "type": "string"
+        },
+        "youtube": {
+          "type": "string"
+        },
+        "weibo": {
+          "type": "string"
+        },
+        "bilibili": {
+          "type": "string"
+        },
+        "qq_group": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "general",
+        "twitter",
+        "discord",
+        "youtube",
+        "weibo",
+        "bilibili",
+        "qq_group"
+      ]
+    },
+    "donate": {
+      "type": "object",
+      "properties": {
+        "general": {
+          "type": "string"
+        },
+        "paypal": {
+          "type": "string"
+        },
+        "patreon": {
+          "type": "string"
+        },
+        "buymeacoffee": {
+          "type": "string"
+        },
+        "afdian": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "general",
+        "paypal",
+        "patreon",
+        "buymeacoffee",
+        "afdian"
+      ]
+    },
+    "manager": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "snid",
+    "name",
+    "description",
+    "version",
+    "author",
+    "type",
+    "campaign",
+    "campaignBank",
+    "website",
+    "social",
+    "donate",
+    "manager"
+  ]
+}

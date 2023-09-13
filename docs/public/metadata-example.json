@@ -1,0 +1,28 @@
+{
+  "snid": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+  "name": "Camapign Package Name Here",
+  "description": "Camapign Package Description Here",
+  "version": "0.0.1",
+  "author": "Author Name Here",
+  "type": "campaign",
+  "campaign": "WOL",
+  "campaignBank": "offcial",
+  "website": "",
+  "social": {
+    "general": "",
+    "twitter": "",
+    "discord": "",
+    "youtube": "",
+    "weibo": "",
+    "bilibili": "",
+    "qq_group": ""
+  },
+  "donate": {
+    "general": "",
+    "paypal": "",
+    "patreon": "",
+    "buymeacoffee": "",
+    "afdian": ""
+  },
+  "manager": "SCNexus"
+}

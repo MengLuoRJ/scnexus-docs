@@ -16,7 +16,7 @@ hero:
       link: /guide/
     - theme: alt
       text: 查看文档
-      link: /rfcs/
+      link: /reference/
     - theme: alt
       text: GitHub
       link: https://github.com/MengLuoRJ/scnexus
