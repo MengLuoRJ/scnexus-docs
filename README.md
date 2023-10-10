@@ -12,11 +12,17 @@
 
 ## Getting Started
 
+### Get the Application Installer
+
+- Get the Application Installer from our website: [SCNexus](https://scnexus.aiurcovenant.net/)
+
 ### Get the Application from Microsoft Store
 
-<a href="https://apps.microsoft.com/store/detail/9PL7DCMCN13X?launch=true&mode=full">
+Microsoft Store version is not use-able due to feature bugs right now.
+
+<!-- <a href="https://apps.microsoft.com/store/detail/9PL7DCMCN13X?launch=true&mode=full">
 	<img src="https://get.microsoft.com/images/zh-CN%20dark.svg"/>
-</a>
+</a> -->
 
 ## Features
 
