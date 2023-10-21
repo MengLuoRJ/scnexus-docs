@@ -10,8 +10,9 @@ export default defineConfig({
     nav: [
       { text: "指南", link: "/guide/" },
       { text: "参考文档", link: "/reference/" },
-      { text: "使用条款", link: "/terms.html" },
-      { text: "隐私政策", link: "/privacy-policy.html" },
+      { text: "使用条款", link: "/terms" },
+      { text: "隐私政策", link: "/privacy-policy" },
+      { text: "赞助支持", link: "/sponsor" },
     ],
     socialLinks: [
       { icon: "github", link: "https://github.com/MengLuoRJ/scnexus" },
@@ -24,13 +25,25 @@ export default defineConfig({
       title: "星际枢纽",
       description: "星际枢纽文档",
       themeConfig: {
-        // sidebar: [
-        //   {
-        //     text: "Examples",
-        //     items: [
-        //     ],
-        //   },
-        // ],
+        sidebar: {
+          '/guide/': [
+            {
+              text: '星际枢纽指南',
+              items: [
+                { text: '简介', link: '/guide/' },
+                { text: '常见问题', link: '/guide/faq' },
+                {
+                  text: '创作者指南',
+                  collapsed: false,
+                  items: [
+                    { text: '创建项目', link: '/guide/creator/create-project' },
+                    { text: '包管理与富信息', link: '/guide/creator/package-management' },
+                  ]
+                }
+              ],
+            },
+          ],
+        },
       },
     },
     en: {
@@ -40,7 +53,15 @@ export default defineConfig({
       description: "SCNexus Documents",
     },
   },
-
+  markdown: {
+    config: (md) => {
+      md.disable("linkify")
+        // .use(MarkdownItFootnote)
+        // .use(MarkdownItMark)
+        // .use(MarkdownItImsize)
+        // .use(MarkdownItPanguTs);
+    },
+  },
   vite: {
     plugins: [UnoCSS(), visualizer()],
   },
