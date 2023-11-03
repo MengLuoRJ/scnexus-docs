@@ -4,6 +4,13 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  sitemap: {
+    hostname: "https://scnexus.aiurcovenant.net",
+    transformItems: (items) => {
+      // exlucde pages under path /apis/*
+      return items.filter((item) => !item.url.startsWith("/apis/"));
+    },
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: "/logo_scnexus_large_512.png",
@@ -26,21 +33,33 @@ export default defineConfig({
       description: "星际枢纽文档",
       themeConfig: {
         sidebar: {
-          '/guide/': [
+          "/guide/": [
             {
-              text: '星际枢纽指南',
+              text: "星际枢纽指南",
               items: [
-                { text: '简介', link: '/guide/' },
-                { text: '常见问题', link: '/guide/faq' },
+                { text: "简介", link: "/guide/" },
+                { text: "常见问题", link: "/guide/faq" },
                 {
-                  text: '创作者指南',
+                  text: "创作者指南",
                   collapsed: false,
                   items: [
-                    { text: '创建项目', link: '/guide/creator/create-project' },
-                    { text: '包管理与富信息', link: '/guide/creator/package-management' },
-                  ]
-                }
+                    {
+                      text: "创建项目包",
+                      link: "/guide/creator/create-project",
+                    },
+                    {
+                      text: "包管理与富信息",
+                      link: "/guide/creator/package-management",
+                    },
+                  ],
+                },
               ],
+            },
+          ],
+          "/reference/": [
+            {
+              text: "参考文档",
+              items: [],
             },
           ],
         },
@@ -55,11 +74,11 @@ export default defineConfig({
   },
   markdown: {
     config: (md) => {
-      md.disable("linkify")
-        // .use(MarkdownItFootnote)
-        // .use(MarkdownItMark)
-        // .use(MarkdownItImsize)
-        // .use(MarkdownItPanguTs);
+      md.disable("linkify");
+      // .use(MarkdownItFootnote)
+      // .use(MarkdownItMark)
+      // .use(MarkdownItImsize)
+      // .use(MarkdownItPanguTs);
     },
   },
   vite: {

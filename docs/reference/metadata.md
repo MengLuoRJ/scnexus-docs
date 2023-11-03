@@ -16,20 +16,111 @@
 
 ``` ts
 type Metadata = {
+  snid?: string;
   name: string;
   description: string;
-  website?: string;
-  author: string;
   version: string;
-  type: "WOL" | "HOTS" | "LOTV" | "NCO" | "CUSTOM";
+  author: string;
+  /**
+   * Type of the metadata.
+   * @value `Campaign` | `Customize`
+   */
+  type: MetadataType;
+  /**
+   * The campaign type of the Customize if the type is `Campaign`.
+   * @value `WOL` | `HOTS` | `LOTV` | `NCO`
+   * @default undefined
+   */
+  campaign?: CampaignType;
+  /**
+   * The luancher map file which will be run when player play this customize.
+   */
+  luancher?: {
+    map_name: string;
+  };
+  /**
+   * Relative path to the Maps folder from the map file.
+   * Not used as default when the map files are in the root of the Maps folder.
+   *
+   * **Recommended** to set this key to avoid the conflict with other Customizes.
+   *
+   * Default set to `undefined` which means `<GameRoot>/Maps/*`
+   * @default undefined
+   */
+  maps_directory?: string;
+  /**
+   * Informations about *.SC2Map files.
+   *
+   * **File Path:** `<GameRoot>/Maps/<maps_directory>/<map.relative_path>/<map.name>`
+   */
   maps?: {
+    /**
+     * Name of the map file, should with `.SC2Map` extension.
+     * @example `Level1.SC2Map`
+     */
     name: string;
     description: string;
+    version?: string;
+    /**
+     * If the file is saved as Components files
+     * @default undefined
+     */
+    components?: boolean;
+    /**
+     * Relative path to the `maps_directory` from the map file.
+     * Not used as default when the map files are in the `maps_directory` folder.
+     * @default undefined
+     */
+    relative_path?: string;
   }[];
+  /**
+   * Relative path to the Mods folder from the mod file.
+   * Not used as default when the mod files are in the root of the Mods folder.
+   *
+   * **Recommended** to set this key to avoid the conflict with other Customizes.
+   *
+   * Default set to `undefined` which means `<GameRoot>/Mods/*`
+   * @default undefined
+   */
+  dependencies_directory?: string;
+  /**
+   * Informations about *.SC2Mod files.
+   *
+   * **File Path:** `<GameRoot>/Mods/<dependencies_directory>/<dependencies.relative_path>/<dependencies.name>`
+   */
   dependencies?: {
     name: string;
     description: string;
+    version?: string;
+    /**
+     * If the file is saved as Components files
+     * @default undefined
+     */
+    components?: boolean;
+    /**
+     * Relative path to the `dependencies_directory` folder from the mod file.
+     * Not used as default when the mod files are in the `dependencies_directory` folder.
+     * @default undefined
+     */
+    relative_path?: string;
   }[];
+  campaign_bank?: "offcial" | "custom" | "inactive";
+  banks?: {
+    name: string;
+    description: string;
+    version?: string;
+  }[];
+  /**
+   * Specify the manager of this Customize.
+   *
+   * This default to `undefined` which means the manager is not specified,
+   * then will be determined by the metadata file extension,
+   * `metadata.json` will be `SCNexus` and `metadata.txt` will be `CCM`.
+   *
+   * @value `SCNexus` | `CCM`
+   * @default undefined
+   */
+  manager?: "SCNexus" | "CCM";
 };
 ```
 
