@@ -21,17 +21,43 @@ type Metadata = {
   description: string;
   version: string;
   author: string;
+  richinfo?: MetadataRichinfo; // 详见“富文本信息”
+  localizations?: {
+    /**
+     * The locale name, should be the same as the file name.
+     * @example `zn-CN`
+     */
+    locale: string;
+    /**
+     * The name of the Customize in the locale.
+     * @example `Wings of Liberty`
+     */
+    name: string;
+    /**
+     * The description of the Customize in the locale.
+     * /
+    description: string;
+    /**
+     * The semver version of the Customize in the locale.
+     * @example `0.0.1`
+     */
+    version: string;
+    /**
+     * The translaors of the localization.
+     */
+    translator: string[];
+  }[];
   /**
    * Type of the metadata.
    * @value `Campaign` | `Customize`
    */
-  type: MetadataType;
+  type: "Campaign" | "Customize" | string;
   /**
    * The campaign type of the Customize if the type is `Campaign`.
    * @value `WOL` | `HOTS` | `LOTV` | `NCO`
    * @default undefined
    */
-  campaign?: CampaignType;
+  campaign?: "WOL" | "HOTS" | "LOTV" | "NCO";
   /**
    * The luancher map file which will be run when player play this customize.
    */
@@ -103,6 +129,15 @@ type Metadata = {
      * @default undefined
      */
     relative_path?: string;
+    /**
+     * Determine if this dependency is on upstream.
+     * 
+     * If set to `true`, the dependency will require the player to install the upstream dependency first,
+     * and the Customize compressed file can be without this dependency file.
+     * 
+     * @default false 
+     */
+    upstream?: boolean;
   }[];
   campaign_bank?: "offcial" | "custom" | "inactive";
   banks?: {
@@ -121,6 +156,32 @@ type Metadata = {
    * @default undefined
    */
   manager?: "SCNexus" | "CCM";
+};
+```
+
+### 富文本信息
+
+
+``` ts
+type MetadataRichinfo = {
+  website?: string;
+  social?: {
+    general?: string;
+    twitter?: string;
+    discord?: string;
+    youtube?: string;
+    weibo?: string;
+    bilibili?: string;
+    qq_group?: string;
+    wechat_official_account?: string;
+  };
+  donate?: {
+    general?: string;
+    paypal?: string;
+    patreon?: string;
+    buymeacoffee?: string;
+    afdian?: string;
+  };
 };
 ```
 

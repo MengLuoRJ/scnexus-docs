@@ -4,8 +4,8 @@
     "@unocss/preset-web-fonts": "^0.53.6",
     "rollup-plugin-visualizer": "^5.9.2",
     "unocss": "^0.53.6",
-    "vitepress": "1.0.0-rc.24",
-    "vue": "^3.3.7"
+    "vitepress": "1.0.0-rc.27",
+    "vue": "^3.3.8"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
