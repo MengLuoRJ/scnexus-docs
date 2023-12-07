@@ -1,0 +1,28 @@
+{
+  "snid": "100025862",
+  "name": "Camapign Package Name Here",
+  "description": "Camapign Package Description Here",
+  "version": "0.0.1",
+  "author": "Author Name Here",
+  "type": "campaign",
+  "campaign": "WOL",
+  "campaignBank": "offcial",
+  "manager": "SCNexus",
+  "richinfo": {
+    "website": "https://exmaple.com",
+    "social": {
+      "twitter": "https://exmaple.com",
+      "discord": "https://exmaple.com",
+      "youtube": "https://exmaple.com",
+      "weibo": "https://exmaple.com",
+      "bilibili": "https://exmaple.com",
+      "qq_group": "https://exmaple.com"
+    },
+    "donate": {
+      "paypal": "https://exmaple.com",
+      "patreon": "https://exmaple.com",
+      "buymeacoffee": "https://exmaple.com",
+      "afdian": "https://exmaple.com"
+    }
+  }
+}

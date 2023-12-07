@@ -20,7 +20,7 @@
 
 如果你认为「星际枢纽」还不错，请考虑为我们提供捐赠，十分感谢！
 
-::: danger 敬告​
+::: danger 敬告 ​
 
 :warning: 在向 @MengLuoRJ 提供支持前，请确保您具有无偿捐赠的主观意愿。
 
@@ -29,3 +29,9 @@
 :::
 
 - 爱发电（Afdian）：[@mengluorj](https://afdian.net/@mengluorj)（https://afdian.net/@mengluorj）
+
+<!-- <iframe id="afdian_leaflet_mengluorj" src="https://afdian.net/leaflet?slug=mengluorj" width="100%" scrolling="no" height="200" frameborder="0"></iframe> -->
+
+<a href="https://afdian.net/a/mengluorj">
+<img width="200" src="https://pic1.afdiancdn.com/static/img/welcome/button-sponsorme.png" alt="">
+</a >

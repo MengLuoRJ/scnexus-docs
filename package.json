@@ -1,15 +1,22 @@
 {
+  "name": "scnexus-docs",
+  "version": "0.0.15",
+  "description": "SCNexus Docs",
+  "author": "MengLuoRJ <mengluorj@aiurcovenant.net>",
+  "keywords": [
+    "SCNexus"
+  ],
   "type": "module",
   "devDependencies": {
-    "@unocss/preset-web-fonts": "^0.53.6",
-    "rollup-plugin-visualizer": "^5.9.2",
-    "unocss": "^0.53.6",
-    "vitepress": "1.0.0-rc.27",
-    "vue": "^3.3.8"
+    "@unocss/preset-web-fonts": "^0.58.0",
+    "rollup-plugin-visualizer": "^5.10.0",
+    "unocss": "^0.58.0",
+    "vitepress": "1.0.0-rc.31",
+    "vue": "^3.3.10"
   },
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
   }
 }

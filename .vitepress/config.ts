@@ -4,6 +4,11 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  srcDir: "src",
+  base: "/",
+  lang: "zh",
+  title: "星际枢纽",
+  description: "星际枢纽文档",
   sitemap: {
     hostname: "https://scnexus.aiurcovenant.net",
     transformItems: (items) => {
@@ -14,6 +19,37 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: "/logo_scnexus_large_512.png",
+    sidebar: {
+      "/guide/": [
+        {
+          text: "星际枢纽指南",
+          items: [
+            { text: "简介", link: "/guide/" },
+            { text: "常见问题", link: "/guide/faq" },
+            {
+              text: "创作者指南",
+              collapsed: false,
+              items: [
+                {
+                  text: "创建项目包",
+                  link: "/guide/creator/create-project",
+                },
+                {
+                  text: "包管理与富信息",
+                  link: "/guide/creator/package-management",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "/reference/": [
+        {
+          text: "参考文档",
+          items: [],
+        },
+      ],
+    },
     nav: [
       { text: "指南", link: "/guide/" },
       { text: "参考文档", link: "/reference/" },
@@ -27,49 +63,13 @@ export default defineConfig({
   },
   locales: {
     root: {
-      label: "简体中文",
-      lang: "zh-CN",
-      title: "星际枢纽",
-      description: "星际枢纽文档",
-      themeConfig: {
-        sidebar: {
-          "/guide/": [
-            {
-              text: "星际枢纽指南",
-              items: [
-                { text: "简介", link: "/guide/" },
-                { text: "常见问题", link: "/guide/faq" },
-                {
-                  text: "创作者指南",
-                  collapsed: false,
-                  items: [
-                    {
-                      text: "创建项目包",
-                      link: "/guide/creator/create-project",
-                    },
-                    {
-                      text: "包管理与富信息",
-                      link: "/guide/creator/package-management",
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-          "/reference/": [
-            {
-              text: "参考文档",
-              items: [],
-            },
-          ],
-        },
-      },
+      label: '中文',
+      lang: "zh",
     },
     en: {
       label: "English",
-      lang: "en-US",
-      title: "SCNexus Docs",
-      description: "SCNexus Documents",
+      lang: "en",
+      link: "https://en.scnexus.aiurcovenant.net"
     },
   },
   markdown: {
