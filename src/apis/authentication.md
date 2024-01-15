@@ -13,8 +13,8 @@ onMounted(() => {
   if (params.has("access_token") && params.has("refresh_token")) {
     available.value = true;
     const url = new URL("scnexus://authentication");
-    url.searchParams.set("access_token", params.access_token);
-    url.searchParams.set("refresh_token", params.refresh_token);
+    url.searchParams.append("access_token", params.get('access_token'));
+    url.searchParams.append("refresh_token", params.get('refresh_token'));
     window.open(url, "_self");
   } else {
     available.value = false;
