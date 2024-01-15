@@ -9,11 +9,13 @@ import { ref, onMounted } from "vue";
 const available = ref(false);
 
 onMounted(() => {
-  const searchParams = new URLSearchParams(window.location.search)
-  if (searchParams.has("code")) {
+  const params = new URLSearchParams(window.location.search)
+  if (params.has("access_token") && params.has("refresh_token")) {
     available.value = true;
-    const code = searchParams.get("code");
-    window.open(`scnexus://authentication/?code=${code}`, "_self");
+    const url = new URL("scnexus://authentication");
+    url.searchParams.set("access_token", params.access_token);
+    url.searchParams.set("refresh_token", params.refresh_token);
+    window.open(url, "_self");
   } else {
     available.value = false;
     const closing = setTimeout(() => window.open("/", "_self"), 3000);
