@@ -35,3 +35,5 @@
 <a href="https://afdian.net/a/mengluorj">
 <img width="200" src="https://pic1.afdiancdn.com/static/img/welcome/button-sponsorme.png" alt="">
 </a >
+
+- Patreon: [@mengluorj](https://www.patreon.com/mengluorj)（https://www.patreon.com/mengluorj）
