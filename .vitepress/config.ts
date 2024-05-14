@@ -10,7 +10,7 @@ export default defineConfig({
   title: "星际枢纽",
   description: "星际枢纽文档",
   sitemap: {
-    hostname: "https://scnexus.aiurcovenant.net",
+    hostname: "https://scnexus.net",
     transformItems: (items) => {
       // exlucde pages under path /apis/*
       return items.filter((item) => !item.url.startsWith("/apis/"));
@@ -22,7 +22,7 @@ export default defineConfig({
     sidebar: {
       "/guide/": [
         {
-          text: "星际枢纽指南",
+          text: "基础指南",
           items: [
             { text: "简介", link: "/guide/" },
             { text: "常见问题", link: "/guide/faq" },
@@ -69,7 +69,7 @@ export default defineConfig({
     en: {
       label: "English",
       lang: "en",
-      link: "https://en.scnexus.aiurcovenant.net"
+      link: "https://en.scnexus.net"
     },
   },
   markdown: {
