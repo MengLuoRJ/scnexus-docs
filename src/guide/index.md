@@ -17,7 +17,7 @@ title: 简介
 
 ### 安装程序
 
-- [「星际枢纽」Windows x64 安装程序（直链下载）](https://scnexus-release.mengl.me/release/latest)
+- [「星际枢纽」Windows x64 安装程序（直链下载）](https://release.scnexus.net/release/latest)
 
 ### 微软商店
 
