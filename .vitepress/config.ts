@@ -8,7 +8,23 @@ export default defineConfig({
   base: "/",
   lang: "zh",
   title: "星际枢纽",
-  description: "星际枢纽文档",
+  description: "星际枢纽 - 专为星际社区服务的枢纽应用",
+  head: [
+    ["link", { rel: "icon", href: "/favicon.ico" }],
+    [
+      "meta",
+      {
+        name: "keywords",
+        content:
+          "星际枢纽, SCNexus, 星际社区, 星际应用, 星际地图, STARCRAFT MAP, 星际模组, STARCRAFT MOD, 星际战役, STARCRAFT CAMPAIGN, 星际, 星际2, STARCTAFT, STARCRAFT 2",
+      },
+    ],
+    ["meta", { name: "baidu-site-verification", content: "codeva-Hv8tvWvz6r" }],
+    [
+      "meta",
+      { name: "msvalidate.01", content: "E3BD0E485B6F3FE4E862B600A1B29ADC" },
+    ],
+  ],
   sitemap: {
     hostname: "https://scnexus.net",
     transformItems: (items) => {
@@ -18,7 +34,10 @@ export default defineConfig({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: "/logo_scnexus_large_512.png",
+    logo: "/logo_scnexus_128.webp",
+    search: {
+      provider: "local",
+    },
     sidebar: {
       "/guide/": [
         {
@@ -63,13 +82,13 @@ export default defineConfig({
   },
   locales: {
     root: {
-      label: '中文',
+      label: "中文",
       lang: "zh",
     },
     en: {
       label: "English",
       lang: "en",
-      link: "https://en.scnexus.net"
+      link: "https://english.scnexus.net",
     },
   },
   markdown: {

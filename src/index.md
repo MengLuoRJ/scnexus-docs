@@ -4,10 +4,10 @@ layout: home
 
 hero:
   name: "星际枢纽"
-  text: "应用文档"
+  # text: "应用文档"
   tagline: "专为星际社区服务的枢纽应用"
   image:
-    src: /logo_scnexus_large_512.png
+    src: /logo_scnexus_512.webp
     alt: "SCNexus"
     width: 200
   actions:
