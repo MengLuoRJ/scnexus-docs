@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /apis/
+Disallow: /*.json$
+
+Sitemap: https://scnexus.net/sitemap.xml
