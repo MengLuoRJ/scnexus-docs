@@ -10,6 +10,7 @@
   "devDependencies": {
     "@unocss/preset-web-fonts": "^0.61.3",
     "rollup-plugin-visualizer": "^5.12.0",
+    "sponsorkit": "^0.14.6",
     "unocss": "^0.61.3",
     "vitepress": "1.2.3",
     "vue": "^3.4.31"

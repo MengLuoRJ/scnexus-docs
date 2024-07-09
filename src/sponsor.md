@@ -37,3 +37,14 @@
 </a >
 
 - Patreon: [@mengluorj](https://www.patreon.com/mengluorj)（https://www.patreon.com/mengluorj）
+
+
+## 特别感谢
+
+特别感谢以下用户、玩家和社区成员的支持和打赏！
+
+<script setup>
+import SponsorsList from './components/SponsorsList.vue'
+</script>
+
+<SponsorsList />

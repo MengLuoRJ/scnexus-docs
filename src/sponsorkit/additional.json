@@ -1,0 +1,91 @@
+[
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "Hatsune Miku",
+      "login": "Hatsune Miku",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 1.38,
+    "isOneTime": true,
+    "createdAt": "2024-02-28T17:15:57.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "绝迹",
+      "login": "绝迹",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 6.88,
+    "isOneTime": true,
+    "createdAt": "2024-05-20T08:17:47.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "幽灵狼",
+      "login": "幽灵狼",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 2.75,
+    "isOneTime": true,
+    "createdAt": "2024-05-20T8:17:41.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "七曜圣堂裁决者",
+      "login": "七曜圣堂裁决者",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 0.41,
+    "isOneTime": true,
+    "createdAt": "2024-05-23T05:26:55.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "科迪亚克",
+      "login": "科迪亚克",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 6.88,
+    "isOneTime": true,
+    "createdAt": "2024-07-08T08:11:28.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "kan",
+      "login": "kan",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 2.75,
+    "isOneTime": true,
+    "createdAt": "2024-05-20T08:19:17.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "很菜的小孤独",
+      "login": "很菜的小孤独",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 2.06,
+    "isOneTime": true,
+    "createdAt": "2024-05-20T08:17:04.000Z"
+  },
+  {
+    "sponsor": {
+      "privacyLevel": "PRIVATE",
+      "type": "User",
+      "name": "**泽",
+      "login": "**泽",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 2.75,
+    "isOneTime": true,
+    "createdAt": "2024-05-20T08:16:33.000Z"
+  }
+]
