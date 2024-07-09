@@ -74,6 +74,7 @@ export default defineConfig({
       { text: "参考文档", link: "/reference/" },
       { text: "使用条款", link: "/terms" },
       { text: "隐私政策", link: "/privacy-policy" },
+      { text: "更新日志", link: "/patchnotes" },
       { text: "赞助支持", link: "/sponsor" },
     ],
     socialLinks: [

@@ -1,6 +1,6 @@
-# 更新日志
+# 星际枢纽更新日志
 
-## 版本 0.0.21 @ 2024/07/08 <Badge type="warning" text="测试版本"></Badge>
+<!-- ## 版本 0.0.21 @ 2024/07/08 <Badge type="warning" text="测试版本"></Badge> -->
 
 ## 版本 0.0.20 @ 2024/07/07 <Badge text="稳定版本"></Badge>
 
