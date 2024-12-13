@@ -32,6 +32,7 @@ export default defineConfig({
       return items.filter((item) => !item.url.startsWith("/apis/"));
     },
   },
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: "/logo_scnexus_128.webp",
