@@ -32,12 +32,18 @@
 
 <!-- <iframe id="afdian_leaflet_mengluorj" src="https://afdian.net/leaflet?slug=mengluorj" width="100%" scrolling="no" height="200" frameborder="0"></iframe> -->
 
-<a href="https://afdian.net/a/mengluorj">
+<a href="https://afdian.com/a/mengluorj">
 <img width="200" src="https://pic1.afdiancdn.com/static/img/welcome/button-sponsorme.png" alt="">
 </a >
 
 - Patreon: [@mengluorj](https://www.patreon.com/mengluorj)（https://www.patreon.com/mengluorj）
 
+- 赞助码（Donate QRCode）：
+
+<div class="px-2 py-2 flex flex-row justify-around items-center flex-wrap border border-solid border-gray-200 rounded-2">
+  <img class="w-[200px] h-[250px]" src="/qrcode_mengluorj_alipay.png" />
+  <img class="w-[200px] h-[250px]"  src="/qrcode_mengluorj_wechat.png" />
+</div>
 
 ## 特别感谢
 
