@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 import UnoCSS from "unocss/vite";
 import { visualizer } from "rollup-plugin-visualizer";
+import pkg from "../package.json";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -33,6 +34,8 @@ export default defineConfig({
     },
   },
   lastUpdated: true,
+  cleanUrls: true,
+  metaChunk: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: "/logo_scnexus_128.webp",
@@ -42,9 +45,9 @@ export default defineConfig({
     sidebar: {
       "/guide/": [
         {
-          text: "基础指南",
+          text: "指南",
           items: [
-            { text: "简介", link: "/guide/" },
+            { text: "快速开始", link: "/guide/" },
             { text: "常见问题", link: "/guide/faq" },
             {
               text: "创作者指南",
@@ -72,11 +75,22 @@ export default defineConfig({
     },
     nav: [
       { text: "指南", link: "/guide/" },
-      { text: "参考文档", link: "/reference/" },
-      { text: "使用条款", link: "/terms" },
-      { text: "隐私政策", link: "/privacy-policy" },
-      { text: "更新日志", link: "/patchnotes" },
+      { text: "参考", link: "/reference/" },
       { text: "赞助支持", link: "/sponsor" },
+      {
+        text: `v${pkg.version}`,
+        items: [
+          { text: "更新日志", link: "/patchnotes" },
+          {
+            text: "参与翻译",
+            link: "/guide/localization",
+          },
+          {
+            text: "参与贡献",
+            link: "https://github.com/MengLuoRJ/scnexus/blob/main/CONTRIBUTING.md",
+          },
+        ],
+      },
     ],
     socialLinks: [
       { icon: "github", link: "https://github.com/MengLuoRJ/scnexus" },

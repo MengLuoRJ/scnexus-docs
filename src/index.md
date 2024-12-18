@@ -15,8 +15,8 @@ hero:
       text: 快速开始
       link: /guide/
     - theme: alt
-      text: 查看文档
-      link: /reference/
+      text: 赞助支持
+      link: /sponsor
     - theme: alt
       text: GitHub
       link: https://github.com/MengLuoRJ/scnexus
