@@ -29,6 +29,14 @@ export default defineConfig({
       "meta",
       { name: "msvalidate.01", content: "E3BD0E485B6F3FE4E862B600A1B29ADC" },
     ],
+    [
+      "script",
+      {
+        'defer': '',
+        "data-cf-beacon": '{"token": "caf6db6bb05f443ea7f8aeea7f0f0d56"}',
+        src: "https://static.cloudflareinsights.com/beacon.min.js",
+      },
+    ],
   ],
 
   sitemap: {
