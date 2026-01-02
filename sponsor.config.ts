@@ -27,7 +27,7 @@ export default defineConfig({
     },
   ],
 
-  async onSponsorsReady(sponsors) {
+  async onSponsorsFetched(sponsors) {
     const data = (await import("./src/sponsorkit/additional.json"))
       .default as Sponsorship[];
     const defaultAvatarFile = await readFile(
