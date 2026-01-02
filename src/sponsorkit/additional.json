@@ -87,5 +87,126 @@
     "monthlyDollars": 2.75,
     "isOneTime": true,
     "createdAt": "2024-05-20T08:16:33.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "星妍",
+      "login": "星妍",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 2.68,
+    "isOneTime": true,
+    "createdAt": "2025-11-08T00:00:00.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "匿名482605",
+      "login": "",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 1.43,
+    "isOneTime": true,
+    "createdAt": "2025-11-10T00:00:00.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "匿名074365",
+      "login": "",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 2.68,
+    "isOneTime": true,
+    "createdAt": "2025-11-10T00:00:00.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "嘉树",
+      "login": "嘉树",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 4.29,
+    "isOneTime": true,
+    "createdAt": "2025-11-11T00:00:00.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "匿名672961",
+      "login": "匿名672961",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 28.6,
+    "isOneTime": true,
+    "createdAt": "2025-12-08T00:00:00.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "**也",
+      "login": "**也",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 7.15,
+    "isOneTime": true,
+    "createdAt": "2025-10-29T00:00:00.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "**昂",
+      "login": "**昂",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 0.14,
+    "isOneTime": true,
+    "createdAt": "2025-11-10T00:00:00.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "**晨",
+      "login": "**晨",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 2.86,
+    "isOneTime": true,
+    "createdAt": "2025-11-11T00:00:00.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "**刚",
+      "login": "**刚",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 2.86,
+    "isOneTime": true,
+    "createdAt": "2025-11-27T00:00:00.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "**阳",
+      "login": "**阳",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 4.29,
+    "isOneTime": true,
+    "createdAt": "2025-12-10T00:00:00.000Z"
+  },
+  {
+    "sponsor": {
+      "type": "User",
+      "name": "**聪",
+      "login": "**聪",
+      "avatarUrl": ""
+    },
+    "monthlyDollars": 1.43,
+    "isOneTime": true,
+    "createdAt": "2025-12-29T00:00:00.000Z"
   }
 ]
