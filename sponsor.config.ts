@@ -8,7 +8,7 @@ export default defineConfig({
   width: 900,
   renderer: "tiers",
   formats: ["json", "svg", "png"],
-  outputDir: "./src/sponsorkit",
+  outputDir: "./app/assets/sponsorkit",
 
   tiers: [
     {

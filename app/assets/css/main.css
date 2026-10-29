@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@plugin "@tailwindcss/typography";
+
+@theme static {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --color-brand-50: #ebf5ff;
+  --color-brand-100: #d6ebff;
+  --color-brand-200: #add6ff;
+  --color-brand-300: #7abaff;
+  --color-brand-400: #3d96ff;
+  --color-brand-500: #007fff;
+  --color-brand-600: #0066cc;
+  --color-brand-700: #004d99;
+  --color-brand-800: #003f7f;
+  --color-brand-900: #002e5c;
+  --color-brand-950: #001f3f;
+
+  --color-hub-50: #e8f7ef;
+  --color-hub-100: #c7ebd8;
+  --color-hub-200: #8fd7b1;
+  --color-hub-300: #4fbf88;
+  --color-hub-400: #17a363;
+  --color-hub-500: #007f3f;
+  --color-hub-600: #006b35;
+  --color-hub-700: #00552a;
+  --color-hub-800: #00401f;
+  --color-hub-900: #002e17;
+  --color-hub-950: #001d0f;
+}
+
+:root {
+  --ui-container: 82rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  @apply bg-white text-slate-700 antialiased dark:bg-slate-950 dark:text-slate-300;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+::selection {
+  @apply bg-brand-500/20 text-brand-900 dark:text-brand-100;
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, currentColor 8%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, currentColor 8%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(color-mix(in oklab, currentColor 14%, transparent) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  }
+
+  .mask-fade-edges {
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  .text-gradient-brand {
+    @apply bg-gradient-to-r from-brand-600 via-brand-500 to-hub-500 bg-clip-text text-transparent dark:from-brand-300 dark:via-brand-400 dark:to-hub-300;
+  }
+
+  .glass-header {
+    @apply border-b border-slate-900/5 bg-white/75 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/70;
+  }
+
+  .card-hover {
+    @apply transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5 dark:hover:shadow-black/30;
+  }
+}
+
+/* Content prose tuning for Chinese text and code blocks */
+.prose {
+  --tw-prose-body: var(--color-slate-700);
+  --tw-prose-headings: var(--color-slate-900);
+  --tw-prose-links: var(--color-brand-600);
+  --tw-prose-bold: var(--color-slate-900);
+  --tw-prose-counters: var(--color-slate-500);
+  --tw-prose-bullets: var(--color-slate-300);
+  --tw-prose-hr: var(--color-slate-200);
+  --tw-prose-quotes: var(--color-slate-700);
+  --tw-prose-quote-borders: var(--color-brand-200);
+  --tw-prose-code: var(--color-slate-800);
+  --tw-prose-th-borders: var(--color-slate-200);
+  --tw-prose-td-borders: var(--color-slate-100);
+  max-width: 72ch;
+}
+
+.dark .prose {
+  --tw-prose-body: var(--color-slate-300);
+  --tw-prose-headings: var(--color-slate-100);
+  --tw-prose-links: var(--color-brand-300);
+  --tw-prose-bold: var(--color-slate-100);
+  --tw-prose-bullets: var(--color-slate-700);
+  --tw-prose-hr: var(--color-slate-800);
+  --tw-prose-quotes: var(--color-slate-300);
+  --tw-prose-quote-borders: var(--color-brand-800);
+  --tw-prose-code: var(--color-slate-200);
+  --tw-prose-th-borders: var(--color-slate-700);
+  --tw-prose-td-borders: var(--color-slate-800);
+}
+
+.prose :where(code):not(:where(pre code)) {
+  @apply rounded-md bg-slate-100 px-1.5 py-0.5 text-[0.875em] font-medium before:content-none after:content-none dark:bg-slate-800;
+}
+
+.prose :where(pre) {
+  @apply rounded-xl border border-slate-200 bg-slate-50 text-sm dark:border-slate-800 dark:bg-slate-900;
+}
+
+.prose :where(h2) {
+  @apply mt-12 scroll-mt-24 border-b border-slate-100 pb-2 dark:border-slate-800;
+}
+
+.prose :where(h3) {
+  @apply mt-8 scroll-mt-24;
+}
+
+.prose :where(a) {
+  @apply font-medium underline decoration-brand-300 underline-offset-4 transition hover:text-brand-700 dark:decoration-brand-700 dark:hover:text-brand-200;
+}
+
+/* Nuxt Content 会给标题包一层锚点链接，这里保持标题本身的外观 */
+.prose :where(h1, h2, h3, h4, h5, h6) a,
+.prose :where(h1, h2, h3, h4, h5, h6) a:hover {
+  @apply text-inherit no-underline decoration-transparent;
+}
+
+.prose :where(table) {
+  @apply overflow-hidden rounded-lg text-sm;
+}
+
+.prose :where(thead th) {
+  @apply bg-slate-50 font-semibold dark:bg-slate-900;
+}

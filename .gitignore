@@ -1,13 +1,14 @@
 # SponsorKit
 
-src/sponsorkit/.cache.json
+app/assets/sponsorkit/.cache.json
 
-# Rollup Visualizer
-stats.html
+# Nuxt build output
+.nuxt
+.output
+.data
 
-# Vitepress Dev
-.vitepress/dist
-.vitepress/cache
+# 旧 VitePress 残留（若本地构建过旧版本会自动重建）
+.vitepress
 
 # Env
 *.env
