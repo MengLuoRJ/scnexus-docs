@@ -30,9 +30,9 @@ updated: "2024-12-18"
 
 想要参与讨论或者获得帮助？欢迎加入以下交流社区：
 
-- \[GEECG\] 星际枢纽中文用户交流群：[857601125](https://qm.qq.com/cgi-bin/qm/qr?k=IgP5DkVYkL-VlgMPESNmRaPiYFCQLrNI&jump_from=webapi&authKey=IH1aC/1uFvcRC43U2h3R4Ms2YhbMg082p4RTMSV4GHZSRmfIyLjJodIwwf8wAdL4)
+- **QQ 交流群**：星际枢纽中文用户交流群（群号 857601125）—— [点击加入](https://qm.qq.com/cgi-bin/qm/qr?k=IgP5DkVYkL-VlgMPESNmRaPiYFCQLrNI&jump_from=webapi&authKey=IH1aC/1uFvcRC43U2h3R4Ms2YhbMg082p4RTMSV4GHZSRmfIyLjJodIwwf8wAdL4)
 
-- \[GEECG\] SCNexus Discord Server: [https://discord.gg/U6EbQKdkH2](https://discord.gg/U6EbQKdkH2)
+- **Discord 服务器**：SCNexus —— [discord.gg/U6EbQKdkH2](https://discord.gg/U6EbQKdkH2)
 
 ## 赞助支持
 
