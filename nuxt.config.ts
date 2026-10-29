@@ -7,6 +7,23 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  /**
+   * 排版用系统字体栈（见 main.css 的 --font-sans），不需要任何在线字体。
+   * @nuxt/fonts 默认会注册 google / adobe / bunny 等远程 provider，启动时会去拉取字体，
+   * 在无外网或受限网络下会抛 UND_ERR_CONNECT_TIMEOUT 并拖慢启动；这里全部关闭，只保留 local。
+   */
+  fonts: {
+    providers: {
+      adobe: false,
+      google: false,
+      googleicons: false,
+      bunny: false,
+      fontshare: false,
+      fontsource: false,
+      npm: false,
+    },
+  },
+
   components: [
     { path: '~/components', pathPrefix: false },
   ],
