@@ -1,9 +1,12 @@
 <script setup lang="ts">
+const { t } = useI18n()
+const localePath = useLocalePath()
+
 withDefaults(defineProps<{ size?: 'sm' | 'md' }>(), { size: 'md' })
 </script>
 
 <template>
-  <NuxtLink to="/" class="group flex shrink-0 items-center gap-2.5" aria-label="星际枢纽">
+  <NuxtLink :to="localePath('/')" class="group flex shrink-0 items-center gap-2.5" :aria-label="t('docs-basic.name')">
     <img
       src="/logo.svg"
       alt=""
@@ -14,8 +17,8 @@ withDefaults(defineProps<{ size?: 'sm' | 'md' }>(), { size: 'md' })
       <span
         class="font-semibold tracking-tight text-slate-900 dark:text-white"
         :class="size === 'sm' ? 'text-sm' : 'text-[15px]'"
-      >星际枢纽</span>
-      <span class="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">SCNexus Docs</span>
+      >{{ t('docs-basic.name') }}</span>
+      <span class="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">{{ t('docs-basic.docsLabel') }}</span>
     </span>
   </NuxtLink>
 </template>

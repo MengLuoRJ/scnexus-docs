@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+const localePath = useLocalePath()
 const year = new Date().getFullYear()
 </script>
 
@@ -7,15 +9,15 @@ const year = new Date().getFullYear()
     <UContainer class="py-10">
       <div class="flex flex-col items-center gap-1 text-center text-sm">
         <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-slate-500 dark:text-slate-400">
-          <NuxtLink to="/terms" class="transition hover:text-brand-600 dark:hover:text-brand-300">使用条款</NuxtLink>
-          <NuxtLink to="/privacy-policy" class="transition hover:text-brand-600 dark:hover:text-brand-300">隐私政策</NuxtLink>
-          <NuxtLink to="/sponsor" class="transition hover:text-brand-600 dark:hover:text-brand-300">赞助支持</NuxtLink>
+          <NuxtLink :to="localePath('/terms')" class="transition hover:text-brand-600 dark:hover:text-brand-300">{{ t('docs-basic.footer.terms') }}</NuxtLink>
+          <NuxtLink :to="localePath('/privacy-policy')" class="transition hover:text-brand-600 dark:hover:text-brand-300">{{ t('docs-basic.footer.privacy') }}</NuxtLink>
+          <NuxtLink :to="localePath('/sponsor')" class="transition hover:text-brand-600 dark:hover:text-brand-300">{{ t('docs-basic.footer.sponsor') }}</NuxtLink>
           <a
             href="https://github.com/MengLuoRJ/scnexus"
             target="_blank"
             rel="noopener"
             class="transition hover:text-brand-600 dark:hover:text-brand-300"
-          >代码仓库</a>
+          >{{ t('docs-basic.footer.repo') }}</a>
         </div>
 
         <p class="mt-3 text-slate-600 dark:text-slate-300">
@@ -28,11 +30,11 @@ const year = new Date().getFullYear()
 
         <div class="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
           <span>
-            互联网ICP备案：
+            {{ t('docs-basic.footer.icpLabel') }}
             <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" class="transition hover:text-brand-600 dark:hover:text-brand-300">蜀ICP备17022112号-4</a>
           </span>
           <span>
-            川公网安备：
+            {{ t('docs-basic.footer.policeLabel') }}
             <a
               href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51010602002164"
               target="_blank"

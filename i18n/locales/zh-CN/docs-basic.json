@@ -1,0 +1,37 @@
+{
+  "docs-basic": {
+    "name": "星际枢纽",
+    "docsLabel": "SCNexus Docs",
+    "nav": {
+      "guide": "指南",
+      "reference": "参考",
+      "patchnotes": "更新日志",
+      "sponsor": "赞助支持"
+    },
+    "header": {
+      "menu": "菜单",
+      "github": "GitHub",
+      "language": "切换语言"
+    },
+    "footer": {
+      "terms": "使用条款",
+      "privacy": "隐私政策",
+      "sponsor": "赞助支持",
+      "repo": "代码仓库",
+      "icpLabel": "互联网ICP备案：",
+      "policeLabel": "川公网安备："
+    },
+    "error": {
+      "notFoundTitle": "页面不存在",
+      "genericTitle": "页面加载失败",
+      "notFoundDesc": "链接可能已失效，或对应的文档还未发布。可以回到首页或从快速开始重新查找。",
+      "genericDesc": "服务暂时不可用，请稍后重试。",
+      "home": "返回首页",
+      "start": "快速开始"
+    },
+    "seo": {
+      "titleSuffix": "星际枢纽 · 应用文档",
+      "description": "星际枢纽（SCNexus）应用文档：快速开始、参考文档、更新日志与赞助支持。"
+    }
+  }
+}

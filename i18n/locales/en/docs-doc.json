@@ -1,0 +1,19 @@
+{
+  "docs-doc": {
+    "sidebar": "Documentation",
+    "toc": "On this page",
+    "tocMobile": "Contents",
+    "updated": "Last updated",
+    "prev": "Previous",
+    "next": "Next",
+    "home": "Home",
+    "groups": {
+      "start": "Getting started",
+      "usage": "Guides",
+      "reference": "Reference"
+    },
+    "fallbackNotice": "This page is not available in English yet. Showing the Chinese version below.",
+    "translationMissing": "Not translated",
+    "versions": "Language versions"
+  }
+}

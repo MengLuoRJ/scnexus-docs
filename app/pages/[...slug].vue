@@ -1,34 +1,78 @@
 <script setup lang="ts">
+import type { ContentLocale } from '~/utils/content-locale'
+
 const route = useRoute()
+const { t, locale } = useI18n()
+const localePath = useLocalePath()
 
-const path = computed(() => route.path.replace(/\/+$/, '') || '/')
+const contentLocale = computed(() => asContentLocale(locale.value))
+const otherLocale = computed<ContentLocale>(() => (contentLocale.value === 'zh-CN' ? 'en' : 'zh-CN'))
 
-const { data: doc } = await useAsyncData(`content-${path.value}`, async () => {
-  const [docs, pages] = await Promise.all([
-    queryCollection('docs').path(path.value).first(),
-    queryCollection('pages').path(path.value).first(),
+/** 与语言无关的路径：/en/guide 与 /guide 指向同一篇 */
+const path = computed(() => stripLocalePath(route.path, locale.value, 'zh-CN').replace(/\/+$/, '') || '/')
+
+const { data: resolved } = await useAsyncData(`content-${contentLocale.value}-${path.value}`, async () => {
+  const [ownDoc, ownPage, otherDoc, otherPage] = await Promise.all([
+    queryLocalizedContent('docs', contentLocale.value).path(path.value).first(),
+    queryLocalizedContent('pages', contentLocale.value).path(path.value).first(),
+    queryLocalizedContent('docs', otherLocale.value).path(path.value).first(),
+    queryLocalizedContent('pages', otherLocale.value).path(path.value).first(),
   ])
-  return docs ?? pages ?? null
+
+  const own = ownDoc ?? ownPage
+  const other = otherDoc ?? otherPage
+
+  /** 这篇实际存在的语言版本：hreflang 只指这些 */
+  const available: ContentLocale[] = []
+  if (own) available.push(contentLocale.value)
+  if (other) available.push(otherLocale.value)
+
+  /** 文档是 chain 策略：当前语言没有就回退，并在页面上说清楚 */
+  const found = own ?? other
+  if (!found) return null
+  return { doc: found, isFallback: !own, available }
 })
 
-if (!doc.value) {
+const initial = resolved.value
+if (!initial) {
   throw createError({ statusCode: 404, statusMessage: 'Document not found', fatal: true })
 }
 
-const { data: docs } = await useAsyncData('docs-sidebar', () =>
-  queryCollection('docs').order('order', 'ASC').all())
+declarePageLocales(initial.available)
+
+const doc = computed(() => resolved.value?.doc ?? null)
+const isFallback = computed(() => resolved.value?.isFallback ?? false)
+
+/**
+ * 侧栏合并两种语言的条目：未翻译的文档如果不列出来，
+ * 回退页只有知道 URL 的人才能进，对普通读者等于不存在。
+ */
+const { data: docs } = await useAsyncData(`docs-sidebar-${contentLocale.value}`, async () => {
+  const [own, other] = await Promise.all([
+    queryLocalizedContent('docs', contentLocale.value).order('order', 'ASC').all(),
+    queryLocalizedContent('docs', otherLocale.value).order('order', 'ASC').all(),
+  ])
+
+  const merged = new Map<string, { path: string, title: string, group: string, order: number, contentLocale: ContentLocale }>()
+  const toItem = (item: (typeof own)[number], itemLocale: ContentLocale) => ({
+    path: item.path ?? '',
+    title: item.title ?? '',
+    group: item.group ?? 'usage',
+    order: item.order ?? 99,
+    contentLocale: itemLocale,
+  })
+
+  for (const item of other) merged.set(item.path ?? '', toItem(item, otherLocale.value))
+  for (const item of own) merged.set(item.path ?? '', toItem(item, contentLocale.value))
+
+  return [...merged.values()].sort((a, b) => a.order - b.order || a.path.localeCompare(b.path))
+})
 
 const list = computed(() => docs.value ?? [])
 const isDoc = computed(() => list.value.some(item => item.path === path.value))
 
-const GROUPS = [
-  { key: 'start', label: '开始使用' },
-  { key: 'usage', label: '使用指南' },
-  { key: 'reference', label: '参考文档' },
-] as const
-
-const groups = computed(() => GROUPS
-  .map(group => ({ ...group, items: list.value.filter(item => (item.group ?? 'usage') === group.key) }))
+const groups = computed(() => (['start', 'usage', 'reference'] as const)
+  .map(key => ({ key, label: t(`docs-doc.groups.${key}`), items: list.value.filter(item => (item.group ?? 'usage') === key) }))
   .filter(group => group.items.length > 0))
 
 const index = computed(() => list.value.findIndex(item => item.path === path.value))
@@ -44,6 +88,8 @@ const toc = computed<TocLink[]>(() => {
 useSeoMeta({
   title: () => doc.value?.title ?? '',
   description: () => doc.value?.description ?? '',
+  // 正文语言与 URL 语言不一致时不收录，避免"中文正文挂在 /en 下"被判重复内容
+  robots: () => (isFallback.value ? 'noindex, follow' : 'index, follow'),
 })
 </script>
 
@@ -58,9 +104,9 @@ useSeoMeta({
       >
         <aside v-if="isDoc" class="hidden lg:block">
           <div class="sticky top-24">
-            <NuxtLink to="/guide" class="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
+            <NuxtLink :to="localePath('/guide')" class="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
               <UIcon name="i-lucide-book-open" class="size-4 text-brand-500" />
-              应用文档
+              {{ t('docs-doc.sidebar') }}
             </NuxtLink>
             <nav class="mt-6 space-y-5">
               <div v-for="group in groups" :key="group.key">
@@ -70,13 +116,22 @@ useSeoMeta({
                 <ul class="mt-1.5 space-y-0.5">
                   <li v-for="item in group.items" :key="item.path">
                     <NuxtLink
-                      :to="item.path"
-                      class="block rounded-lg px-2 py-1.5 text-[13px] transition"
+                      :to="localePath(item.path)"
+                      class="flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-[13px] transition"
                       :class="item.path === path
                         ? 'bg-brand-50 font-medium text-brand-700 dark:bg-brand-950/60 dark:text-brand-300'
                         : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'"
                     >
-                      {{ item.title }}
+                      <span class="min-w-0 flex-1 truncate">{{ item.title }}</span>
+                      <UBadge
+                        v-if="item.contentLocale !== contentLocale"
+                        color="neutral"
+                        variant="outline"
+                        size="sm"
+                        :title="t('docs-doc.translationMissing')"
+                      >
+                        {{ item.contentLocale === 'zh-CN' ? '中文' : 'EN' }}
+                      </UBadge>
                     </NuxtLink>
                   </li>
                 </ul>
@@ -91,12 +146,12 @@ useSeoMeta({
             class="mb-8 rounded-xl border border-slate-200 bg-white p-3 lg:hidden dark:border-slate-800 dark:bg-slate-900"
           >
             <summary class="cursor-pointer list-none text-sm font-medium text-slate-700 dark:text-slate-200">
-              目录
+              {{ t('docs-doc.tocMobile') }}
             </summary>
             <ul class="mt-3 space-y-1 border-t border-slate-100 pt-3 dark:border-slate-800">
               <li v-for="item in list" :key="item.path">
                 <NuxtLink
-                  :to="item.path"
+                  :to="localePath(item.path)"
                   class="block rounded-lg px-2 py-1.5 text-sm"
                   :class="item.path === path ? 'text-brand-700 dark:text-brand-300' : 'text-slate-600 dark:text-slate-400'"
                 >
@@ -107,12 +162,12 @@ useSeoMeta({
           </details>
 
           <nav class="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
-            <NuxtLink to="/" class="transition hover:text-brand-600 dark:hover:text-brand-300">
-              首页
+            <NuxtLink :to="localePath('/')" class="transition hover:text-brand-600 dark:hover:text-brand-300">
+              {{ t('docs-doc.home') }}
             </NuxtLink>
             <UIcon name="i-lucide-chevron-right" class="size-3" />
-            <NuxtLink v-if="isDoc" to="/guide" class="transition hover:text-brand-600 dark:hover:text-brand-300">
-              应用文档
+            <NuxtLink v-if="isDoc" :to="localePath('/guide')" class="transition hover:text-brand-600 dark:hover:text-brand-300">
+              {{ t('docs-doc.sidebar') }}
             </NuxtLink>
             <UIcon v-if="isDoc" name="i-lucide-chevron-right" class="size-3" />
             <span class="text-slate-500 dark:text-slate-400">{{ doc.title }}</span>
@@ -122,8 +177,16 @@ useSeoMeta({
             {{ doc.title }}
           </h1>
 
+          <p
+            v-if="isFallback"
+            class="mt-4 flex items-start gap-2 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs leading-relaxed text-amber-800 dark:border-amber-900 dark:bg-amber-950/50 dark:text-amber-200"
+          >
+            <UIcon name="i-lucide-info" class="mt-0.5 size-3.5 shrink-0" />
+            <span>{{ t('docs-doc.fallbackNotice') }}</span>
+          </p>
+
           <p v-if="doc.updated" class="mt-3 text-xs text-slate-400 dark:text-slate-500">
-            最后更新于 {{ formatDate(doc.updated) }}
+            {{ t('docs-doc.updated') }} {{ formatDate(doc.updated) }}
           </p>
 
           <ContentRenderer :value="doc" class="prose mt-8 dark:prose-invert" />
@@ -131,12 +194,12 @@ useSeoMeta({
           <nav v-if="isDoc && (prev || next)" class="mt-14 grid gap-3 border-t border-slate-200 pt-6 sm:grid-cols-2 dark:border-slate-800">
             <NuxtLink
               v-if="prev"
-              :to="prev.path"
+              :to="localePath(prev.path)"
               class="group rounded-xl border border-slate-200 p-4 transition hover:border-brand-300 dark:border-slate-800 dark:hover:border-brand-800"
             >
               <span class="flex items-center gap-1.5 text-xs text-slate-400">
                 <UIcon name="i-lucide-arrow-left" class="size-3.5" />
-                上一页
+                {{ t('docs-doc.prev') }}
               </span>
               <p class="mt-1.5 text-sm font-medium text-slate-900 group-hover:text-brand-700 dark:text-white dark:group-hover:text-brand-300">
                 {{ prev.title }}
@@ -144,11 +207,11 @@ useSeoMeta({
             </NuxtLink>
             <NuxtLink
               v-if="next"
-              :to="next.path"
+              :to="localePath(next.path)"
               class="group rounded-xl border border-slate-200 p-4 text-right transition hover:border-brand-300 sm:col-start-2 dark:border-slate-800 dark:hover:border-brand-800"
             >
               <span class="flex items-center justify-end gap-1.5 text-xs text-slate-400">
-                下一页
+                {{ t('docs-doc.next') }}
                 <UIcon name="i-lucide-arrow-right" class="size-3.5" />
               </span>
               <p class="mt-1.5 text-sm font-medium text-slate-900 group-hover:text-brand-700 dark:text-white dark:group-hover:text-brand-300">
@@ -161,7 +224,7 @@ useSeoMeta({
         <aside v-if="isDoc && toc.length" class="hidden xl:block">
           <div class="sticky top-24">
             <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              本页目录
+              {{ t('docs-doc.toc') }}
             </p>
             <ul class="mt-3 space-y-1.5 border-l border-slate-200 dark:border-slate-800">
               <li v-for="link in toc" :key="link.id">

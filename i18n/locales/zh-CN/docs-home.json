@@ -1,0 +1,47 @@
+{
+  "docs-home": {
+    "badge": "v{version} · 稳定版本",
+    "title": "星际枢纽",
+    "tagline": "专为星际社区服务的枢纽应用",
+    "description": "为内容创作者提供更丰富的信息展示方式，为玩家提供战役安装、存档同步与作品管理的一站式入口。",
+    "start": "快速开始",
+    "sponsor": "赞助支持",
+    "featuresTitle": "应用功能",
+    "featuresDesc": "围绕星际社区的内容创作与游玩体验构建",
+    "features": {
+      "info": {
+        "title": "富信息展示",
+        "details": "为内容创作者提供在地图和模组显示更加丰富信息的能力。"
+      },
+      "review": {
+        "title": "地图 / 模组评分与评论",
+        "details": "让玩家可以直接在枢纽内评价与讨论作品（敬请期待）。"
+      },
+      "campaign": {
+        "title": "自制战役分发与管理",
+        "details": "帮助内容创作者分发自制战役和自制内容，支持「星际枢纽」标准与「CCM」格式。"
+      },
+      "cloud": {
+        "title": "云同步存档",
+        "details": "为官方战役、自制战役与「大厅计划」云存档地图提供云同步存档。"
+      }
+    },
+    "entries": {
+      "guide": {
+        "title": "快速开始",
+        "details": "下载安装、启动游戏与加入社区"
+      },
+      "reference": {
+        "title": "参考文档",
+        "details": "压缩安装包元数据标准与字段说明"
+      },
+      "patchnotes": {
+        "title": "更新日志",
+        "details": "各版本的更新与修正记录"
+      }
+    },
+    "viewDocs": "查看文档",
+    "communityTitle": "加入星际社区",
+    "communityDesc": "无论是使用中遇到问题，还是想参与翻译与贡献，都欢迎加入交流群或 Discord 服务器。"
+  }
+}

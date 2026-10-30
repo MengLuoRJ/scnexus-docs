@@ -1,16 +1,20 @@
 <script setup lang="ts">
+const { t, locale, defaultLocale } = useI18n()
+const localePath = useLocalePath()
 const route = useRoute()
 const navOpen = ref(false)
 
-const items = [
-  { label: '指南', to: '/guide' },
-  { label: '参考', to: '/reference' },
-  { label: '更新日志', to: '/patchnotes' },
-  { label: '赞助支持', to: '/sponsor' },
-]
+const items = computed(() => [
+  { label: t('docs-basic.nav.guide'), to: '/guide' },
+  { label: t('docs-basic.nav.reference'), to: '/reference' },
+  { label: t('docs-basic.nav.patchnotes'), to: '/patchnotes' },
+  { label: t('docs-basic.nav.sponsor'), to: '/sponsor' },
+])
 
 function isActive(to: string) {
-  return route.path === to || route.path.startsWith(`${to}/`)
+  // 英文站在 /en/... 下，激活态按去掉语言前缀后的路径判断
+  const path = stripLocalePath(route.path, locale.value, defaultLocale)
+  return path === to || path.startsWith(`${to}/`)
 }
 
 watch(() => route.fullPath, () => {
@@ -27,7 +31,7 @@ watch(() => route.fullPath, () => {
           <NuxtLink
             v-for="item in items"
             :key="item.to"
-            :to="item.to"
+            :to="localePath(item.to)"
             class="rounded-lg px-3 py-1.5 text-sm font-medium transition"
             :class="isActive(item.to)
               ? 'text-brand-700 dark:text-brand-300'
@@ -39,6 +43,7 @@ watch(() => route.fullPath, () => {
       </div>
 
       <div class="flex items-center gap-1">
+        <LocaleSwitcher />
         <UButton
           to="https://github.com/MengLuoRJ/scnexus"
           target="_blank"
@@ -46,7 +51,7 @@ watch(() => route.fullPath, () => {
           color="neutral"
           variant="ghost"
           icon="i-simple-icons-github"
-          aria-label="GitHub"
+          :aria-label="t('docs-basic.header.github')"
           square
         />
         <UColorModeButton color="neutral" variant="ghost" />
@@ -55,7 +60,7 @@ watch(() => route.fullPath, () => {
           color="neutral"
           variant="ghost"
           :icon="navOpen ? 'i-lucide-x' : 'i-lucide-menu'"
-          aria-label="菜单"
+          :aria-label="t('docs-basic.header.menu')"
           square
           @click="navOpen = !navOpen"
         />
@@ -67,7 +72,7 @@ watch(() => route.fullPath, () => {
         <NuxtLink
           v-for="item in items"
           :key="item.to"
-          :to="item.to"
+          :to="localePath(item.to)"
           class="rounded-lg px-2 py-2 text-sm font-medium"
           :class="isActive(item.to) ? 'text-brand-700 dark:text-brand-300' : 'text-slate-600 dark:text-slate-300'"
         >

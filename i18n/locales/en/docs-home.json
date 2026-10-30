@@ -1,0 +1,47 @@
+{
+  "docs-home": {
+    "badge": "v{version} · stable",
+    "title": "SCNexus",
+    "tagline": "The hub built for the StarCraft community",
+    "description": "Richer information for creators, and a single entry point for players: campaign installation, save sync and content management.",
+    "start": "Quick start",
+    "sponsor": "Sponsor",
+    "featuresTitle": "Features",
+    "featuresDesc": "Built around creating and playing content in the StarCraft community",
+    "features": {
+      "info": {
+        "title": "Rich information",
+        "details": "Creators can surface far more information on maps and mods."
+      },
+      "review": {
+        "title": "Map / mod ratings and comments",
+        "details": "Players can rate and discuss content right inside the hub (coming soon)."
+      },
+      "campaign": {
+        "title": "Custom campaign distribution",
+        "details": "Distribute custom campaigns and content in both the SCNexus standard and the CCM format."
+      },
+      "cloud": {
+        "title": "Cloud save sync",
+        "details": "Cloud saves for official campaigns, custom campaigns and Lobby Plan maps."
+      }
+    },
+    "entries": {
+      "guide": {
+        "title": "Quick start",
+        "details": "Download, install, launch the game and join the community"
+      },
+      "reference": {
+        "title": "Reference",
+        "details": "Package metadata standard and field descriptions"
+      },
+      "patchnotes": {
+        "title": "Changelog",
+        "details": "Updates and fixes for every release"
+      }
+    },
+    "viewDocs": "Read the docs",
+    "communityTitle": "Join the community",
+    "communityDesc": "Whether you need help or want to contribute translations, the chat group and the Discord server are both open."
+  }
+}

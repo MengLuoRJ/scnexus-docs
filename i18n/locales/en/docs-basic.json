@@ -1,0 +1,37 @@
+{
+  "docs-basic": {
+    "name": "SCNexus",
+    "docsLabel": "SCNexus Docs",
+    "nav": {
+      "guide": "Guide",
+      "reference": "Reference",
+      "patchnotes": "Changelog",
+      "sponsor": "Sponsor"
+    },
+    "header": {
+      "menu": "Menu",
+      "github": "GitHub",
+      "language": "Switch language"
+    },
+    "footer": {
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "sponsor": "Sponsor",
+      "repo": "Repository",
+      "icpLabel": "ICP filing: ",
+      "policeLabel": "Public security filing: "
+    },
+    "error": {
+      "notFoundTitle": "Page not found",
+      "genericTitle": "Failed to load",
+      "notFoundDesc": "The link may be out of date, or the page has not been published yet. Go back home, or start from the quick start guide.",
+      "genericDesc": "The service is temporarily unavailable. Please try again later.",
+      "home": "Back home",
+      "start": "Quick start"
+    },
+    "seo": {
+      "titleSuffix": "SCNexus · Documentation",
+      "description": "SCNexus documentation: quick start, reference, changelog and sponsorship."
+    }
+  }
+}

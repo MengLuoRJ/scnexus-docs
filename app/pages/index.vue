@@ -1,38 +1,39 @@
 <script setup lang="ts">
+const { t } = useI18n()
+const localePath = useLocalePath()
+
 const version = '0.0.21'
 
-const features = [
-  {
-    icon: 'i-lucide-sparkles',
-    title: '富信息展示',
-    details: '为内容创作者提供在地图和模组显示更加丰富信息的能力。',
-  },
-  {
-    icon: 'i-lucide-message-square-text',
-    title: '地图 / 模组评分与评论',
-    details: '让玩家可以直接在枢纽内评价与讨论作品（敬请期待）。',
-  },
-  {
-    icon: 'i-lucide-package',
-    title: '自制战役分发与管理',
-    details: '帮助内容创作者分发自制战役和自制内容，支持「星际枢纽」标准与「CCM」格式。',
-  },
-  {
-    icon: 'i-lucide-cloud-upload',
-    title: '云同步存档',
-    details: '为官方战役、自制战役与「大厅计划」云存档地图提供云同步存档。',
-  },
-]
+const features = computed(() => [
+  { icon: 'i-lucide-sparkles', ...def('info') },
+  { icon: 'i-lucide-message-square-text', ...def('review') },
+  { icon: 'i-lucide-package', ...def('campaign') },
+  { icon: 'i-lucide-cloud-upload', ...def('cloud') },
+])
 
-const entries = [
-  { to: '/guide', icon: 'i-lucide-rocket', title: '快速开始', details: '下载安装、启动游戏与加入社区' },
-  { to: '/reference/metadata', icon: 'i-lucide-file-json', title: '参考文档', details: '压缩安装包元数据标准与字段说明' },
-  { to: '/patchnotes', icon: 'i-lucide-history', title: '更新日志', details: '各版本的更新与修正记录' },
-]
+function def(key: 'info' | 'review' | 'campaign' | 'cloud') {
+  return {
+    title: t(`docs-home.features.${key}.title`),
+    details: t(`docs-home.features.${key}.details`),
+  }
+}
+
+const entries = computed(() => [
+  { to: '/guide', icon: 'i-lucide-rocket', ...entry('guide') },
+  { to: '/reference/metadata', icon: 'i-lucide-file-json', ...entry('reference') },
+  { to: '/patchnotes', icon: 'i-lucide-history', ...entry('patchnotes') },
+])
+
+function entry(key: 'guide' | 'reference' | 'patchnotes') {
+  return {
+    title: t(`docs-home.entries.${key}.title`),
+    details: t(`docs-home.entries.${key}.details`),
+  }
+}
 
 useSeoMeta({
   title: '',
-  description: '星际枢纽（SCNexus）是一款专为星际社区服务的枢纽应用，提供富信息展示、自制战役分发与管理、云同步存档等能力。',
+  description: () => t('docs-home.description'),
 })
 </script>
 
@@ -45,7 +46,7 @@ useSeoMeta({
       <UContainer class="relative py-20 sm:py-28">
         <div class="mx-auto max-w-3xl text-center">
           <UBadge color="primary" variant="subtle" size="sm" class="rounded-full">
-            v{{ version }} · 稳定版本
+            {{ t('docs-home.badge', { version }) }}
           </UBadge>
 
           <img
@@ -55,24 +56,24 @@ useSeoMeta({
           >
 
           <h1 class="mt-6 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-            星际枢纽
+            {{ t('docs-home.title') }}
           </h1>
           <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
-            专为星际社区服务的枢纽应用
+            {{ t('docs-home.tagline') }}
           </p>
           <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-500 dark:text-slate-400">
-            为内容创作者提供更丰富的信息展示方式，为玩家提供战役安装、存档同步与作品管理的一站式入口。
+            {{ t('docs-home.description') }}
           </p>
 
           <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <UButton to="/guide" size="lg" icon="i-lucide-rocket" label="快速开始" />
+            <UButton :to="localePath('/guide')" size="lg" icon="i-lucide-rocket" :label="t('docs-home.start')" />
             <UButton
-              to="/sponsor"
+              :to="localePath('/sponsor')"
               size="lg"
               color="neutral"
               variant="outline"
               icon="i-lucide-heart"
-              label="赞助支持"
+              :label="t('docs-home.sponsor')"
             />
             <UButton
               to="https://github.com/MengLuoRJ/scnexus"
@@ -93,10 +94,10 @@ useSeoMeta({
       <UContainer>
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl dark:text-white">
-            应用功能
+            {{ t('docs-home.featuresTitle') }}
           </h2>
           <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">
-            围绕星际社区的内容创作与游玩体验构建
+            {{ t('docs-home.featuresDesc') }}
           </p>
         </div>
 
@@ -124,18 +125,18 @@ useSeoMeta({
       <UContainer>
         <div class="grid gap-4 sm:grid-cols-3">
           <NuxtLink
-            v-for="entry in entries"
-            :key="entry.to"
-            :to="entry.to"
+            v-for="item in entries"
+            :key="item.to"
+            :to="localePath(item.to)"
             class="group rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-brand-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-brand-800"
           >
             <div class="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
-              <UIcon :name="entry.icon" class="size-4 text-brand-500" />
-              {{ entry.title }}
+              <UIcon :name="item.icon" class="size-4 text-brand-500" />
+              {{ item.title }}
             </div>
-            <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">{{ entry.details }}</p>
+            <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">{{ item.details }}</p>
             <span class="mt-4 inline-flex items-center gap-1 text-xs font-medium text-brand-600 group-hover:gap-2 dark:text-brand-300">
-              查看文档
+              {{ t('docs-home.viewDocs') }}
               <UIcon name="i-lucide-arrow-right" class="size-3.5" />
             </span>
           </NuxtLink>
@@ -146,9 +147,9 @@ useSeoMeta({
     <section class="pb-24">
       <UContainer>
         <div class="rounded-3xl bg-slate-900 px-8 py-12 text-center dark:bg-slate-900">
-          <h2 class="text-2xl font-semibold text-white">加入星际社区</h2>
+          <h2 class="text-2xl font-semibold text-white">{{ t('docs-home.communityTitle') }}</h2>
           <p class="mx-auto mt-3 max-w-xl text-sm text-slate-300">
-            无论是使用中遇到问题，还是想参与翻译与贡献，都欢迎加入交流群或 Discord 服务器。
+            {{ t('docs-home.communityDesc') }}
           </p>
           <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
             <UButton
@@ -168,7 +169,7 @@ useSeoMeta({
               color="neutral"
               variant="outline"
               icon="i-lucide-users"
-              label="QQ 群 857601125"
+              label="QQ 857601125"
               class="border-white/25 text-white hover:bg-white/10"
             />
           </div>

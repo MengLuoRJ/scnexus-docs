@@ -3,7 +3,7 @@ export default defineNuxtConfig({
 
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
 
-  modules: ['@nuxt/ui', '@nuxt/content'],
+  modules: ['@nuxt/ui', '@nuxt/content', '@nuxtjs/i18n'],
 
   css: ['~/assets/css/main.css'],
 
@@ -79,6 +79,37 @@ export default defineNuxtConfig({
     },
   },
 
+  /**
+   * 与 scnexus-web 同一套语言约定：中文不带前缀、英文带 `/en`。
+   * 语言包按模块拆文件，一个文件一个顶层键且与文件名相同（key 自带模块前缀）。
+   */
+  i18n: {
+    strategy: 'prefix_except_default',
+    defaultLocale: 'zh-CN',
+    locales: [
+      {
+        code: 'zh-CN',
+        language: 'zh-CN',
+        name: '简体中文',
+        dir: 'ltr',
+        files: ['zh-CN/docs-basic.json', 'zh-CN/docs-home.json', 'zh-CN/docs-doc.json'],
+      },
+      {
+        code: 'en',
+        language: 'en-US',
+        name: 'English',
+        dir: 'ltr',
+        files: ['en/docs-basic.json', 'en/docs-home.json', 'en/docs-doc.json'],
+      },
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'scnexus_lang',
+      redirectOn: 'root',
+      fallbackLocale: 'zh-CN',
+    },
+  },
+
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'https://scnexus.net',
@@ -101,7 +132,11 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/guide', '/reference', '/patchnotes', '/sitemap.xml'],
+      routes: [
+        '/', '/guide', '/reference', '/patchnotes', '/sponsor', '/privacy-policy', '/terms',
+        '/en', '/en/guide', '/en/reference', '/en/patchnotes', '/en/sponsor', '/en/privacy-policy', '/en/terms',
+        '/sitemap.xml',
+      ],
     },
   },
 
