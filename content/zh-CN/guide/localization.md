@@ -6,6 +6,10 @@ group: "contribute"
 updated: "2026-11-01"
 ---
 
+::callout{color="primary" icon="i-lucide-languages"}
+**想直接开始翻译？** 界面词条也可以直接在 Crowdin 上翻译，打开 [crowdin.scnexus.net](https://crowdin.scnexus.net/) 认领即可，不必先读完本页。平台目前仍在试运行，机制与限制见文末「Crowdin 翻译平台」；要改仓库里的文件或新增一门语言，再看下面的章节。
+::
+
 ## 翻译的范围
 
 「星际枢纽」的界面文案随代码放在 [scnexus-client](https://github.com/MengLuoRJ/scnexus) 仓库里，用 [vue-i18n (Next)](https://github.com/intlify/vue-i18n) 加载：一种语言一个目录，一个界面板块一个 JSON 文件。本项目文档站的正文是另一套内容，见文末「文档翻译」。
@@ -147,7 +151,7 @@ pnpm exec oxfmt --write packages/app-renderer-v2/src/locales/zh/ui.json
 
 ## 文档翻译
 
-文档站（[scnexus-docs](https://github.com/MengLuoRJ/scnexus-docs)）的正文与界面文案分开维护：中文内容在 `content/zh-CN/`，英文在 `content/en/`。目前英文内容尚未建立，英文站点会回退显示中文原文并给出提示。文档翻译按文档仓库的 PR 流程单独提交，不在本文的界面翻译范围内。
+文档站（[scnexus-docs](https://github.com/MengLuoRJ/scnexus-docs)）的正文与界面文案分开维护：中文内容在 `content/zh-CN/`，英文在 `content/en/`，同一路径的两个文件即同一篇的中英文版本。「星际枢纽文档」与「参考资料」已全部有英文版，编辑器文档目前仍是中文原文加提示。文档翻译按文档仓库的 PR 流程单独提交，不在本文的界面翻译范围内。
 
 ## 特别鸣谢
 

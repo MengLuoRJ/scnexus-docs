@@ -6,6 +6,10 @@ group: "usage"
 updated: "2026-11-01"
 ---
 
+::callout{color="info" icon="i-lucide-book-open"}
+**能取回什么由来源的格式决定。** GitHub 来源的仓库要求见 [GitHub 安装源标准](/reference/github-source)；取回后的清单解析与安装落点见[星际枢纽压缩包标准](/reference/scnexus-package)，旧版 CCM 包见 [CCM 压缩包标准](/reference/ccm-package)。
+::
+
 ## 两种来源
 
 「下载管理」是内容进入本地的统一入口，支持两类来源：

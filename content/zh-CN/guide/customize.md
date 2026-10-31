@@ -6,6 +6,10 @@ group: "usage"
 updated: "2026-11-01"
 ---
 
+::callout{color="info" icon="i-lucide-book-open"}
+**包的结构与字段以参考资料为准。** `Maps` / `Mods` 的资源声明与启动器地图字段见[星际枢纽压缩包标准](/reference/scnexus-package)；想让玩家从 GitHub 直接下载这部作品，仓库还要满足 [GitHub 安装源标准](/reference/github-source)。
+::
+
 ## 与战役的区别
 
 自制作品（地图包、模组）**直接安装到游戏的 `Maps` / `Mods` 目录**，装完就能在游戏里看到，没有「激活」这一步。管理目录只保存描述与清单，不额外保留一份完整资源副本，所以卸载时依赖清单判断哪些文件由这部作品写入。

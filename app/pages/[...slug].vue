@@ -239,7 +239,7 @@ useSeoMeta({
           </p>
 
           <p v-if="doc.updated" class="mt-3 text-xs text-slate-400 dark:text-slate-500">
-            {{ t('docs-doc.updated') }} {{ formatDate(doc.updated) }}
+            {{ t('docs-doc.updated') }} {{ formatDate(doc.updated, locale) }}
           </p>
 
           <ContentRenderer :value="doc" class="prose mt-8 dark:prose-invert" />
