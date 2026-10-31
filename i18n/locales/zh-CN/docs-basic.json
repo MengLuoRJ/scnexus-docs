@@ -2,11 +2,22 @@
   "docs-basic": {
     "name": "星际枢纽",
     "docsLabel": "SCNexus Docs",
-    "nav": {
-      "guide": "指南",
-      "reference": "参考",
-      "patchnotes": "更新日志",
-      "sponsor": "赞助支持"
+    "sections": {
+      "app": {
+        "label": "星际枢纽文档",
+        "nav": "星际枢纽",
+        "description": "安装、战役、作品与设置"
+      },
+      "editor": {
+        "label": "编辑器文档",
+        "nav": "编辑器",
+        "description": "银河编辑器与创作工具"
+      },
+      "reference": {
+        "label": "参考资料",
+        "nav": "参考资料",
+        "description": "压缩包标准与安装源约定"
+      }
     },
     "header": {
       "menu": "菜单",
@@ -14,10 +25,6 @@
       "language": "切换语言"
     },
     "footer": {
-      "terms": "使用条款",
-      "privacy": "隐私政策",
-      "sponsor": "赞助支持",
-      "repo": "代码仓库",
       "icpLabel": "互联网ICP备案：",
       "policeLabel": "川公网安备："
     },
@@ -31,7 +38,7 @@
     },
     "seo": {
       "titleSuffix": "星际枢纽 · 应用文档",
-      "description": "星际枢纽（SCNexus）应用文档：快速开始、参考文档、更新日志与赞助支持。"
+      "description": "星际枢纽（SCNexus）文档：星际枢纽文档、编辑器文档与参考资料。"
     }
   }
 }

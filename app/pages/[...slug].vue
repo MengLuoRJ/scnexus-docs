@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import type { DocTocLink } from '~/utils/doc-toc'
 import type { ContentLocale } from '~/utils/content-locale'
+import { readDocToc } from '~/utils/doc-toc'
+import { DOC_SECTIONS, docSectionOf } from '~/utils/doc-sections'
 
 const route = useRoute()
 const { t, locale } = useI18n()
@@ -69,21 +72,35 @@ const { data: docs } = await useAsyncData(`docs-sidebar-${contentLocale.value}`,
 })
 
 const list = computed(() => docs.value ?? [])
-const isDoc = computed(() => list.value.some(item => item.path === path.value))
 
-const groups = computed(() => (['start', 'usage', 'reference'] as const)
-  .map(key => ({ key, label: t(`docs-doc.groups.${key}`), items: list.value.filter(item => (item.group ?? 'usage') === key) }))
+/** 当前页所属的大板块；侧栏与上下页都只在板块内工作 */
+const section = computed(() => docSectionOf(path.value))
+const sectionItems = computed(() => list.value.filter(item => docSectionOf(item.path).id === section.value.id))
+
+const isDoc = computed(() => sectionItems.value.some(item => item.path === path.value))
+const sectionLabel = computed(() => t(`docs-basic.sections.${section.value.id}.label`))
+
+const sectionNav = computed(() => DOC_SECTIONS.map(item => ({
+  id: item.id,
+  path: item.path,
+  icon: item.icon,
+  label: t(`docs-basic.sections.${item.id}.label`),
+  description: t(`docs-basic.sections.${item.id}.description`),
+})))
+
+const groups = computed(() => (['start', 'usage', 'contribute', 'reference'] as const)
+  .map(key => ({ key, label: t(`docs-doc.groups.${key}`), items: sectionItems.value.filter(item => (item.group ?? 'usage') === key) }))
   .filter(group => group.items.length > 0))
 
-const index = computed(() => list.value.findIndex(item => item.path === path.value))
-const prev = computed(() => (index.value > 0 ? list.value[index.value - 1] : null))
-const next = computed(() => (index.value >= 0 && index.value < list.value.length - 1 ? list.value[index.value + 1] : null))
+/** 板块里只有一个分组时不重复写分组标题，那只是板块名换了个说法 */
+const showGroupTitles = computed(() => groups.value.length > 1)
 
-type TocLink = { id: string, text: string, depth: number }
-const toc = computed<TocLink[]>(() => {
-  const links = (doc.value?.body as { toc?: { links?: TocLink[] } })?.toc?.links
-  return Array.isArray(links) ? links : []
-})
+const index = computed(() => sectionItems.value.findIndex(item => item.path === path.value))
+const prev = computed(() => (index.value > 0 ? sectionItems.value[index.value - 1] : null))
+const next = computed(() => (index.value >= 0 && index.value < sectionItems.value.length - 1 ? sectionItems.value[index.value + 1] : null))
+
+type TocLink = DocTocLink
+const toc = computed<TocLink[]>(() => readDocToc(doc.value?.body))
 
 useSeoMeta({
   title: () => doc.value?.title ?? '',
@@ -96,6 +113,39 @@ useSeoMeta({
 <template>
   <div v-if="doc">
     <UContainer class="py-8 lg:py-12">
+      <!-- 三个大板块的切换入口：只在文档页出现，非文档页（更新日志等）没有板块归属 -->
+      <nav v-if="isDoc" class="mb-8 grid gap-2 sm:grid-cols-3">
+        <NuxtLink
+          v-for="item in sectionNav"
+          :key="item.id"
+          :to="localePath(item.path)"
+          class="group flex items-center gap-3 rounded-xl border px-3.5 py-3 transition"
+          :class="item.id === section.id
+            ? 'border-brand-300 bg-brand-50/70 dark:border-brand-700 dark:bg-brand-950/40'
+            : 'border-slate-200 bg-white hover:border-brand-200 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-brand-900 dark:hover:bg-slate-800/60'"
+        >
+          <span
+            class="flex size-8 shrink-0 items-center justify-center rounded-lg transition"
+            :class="item.id === section.id
+              ? 'bg-brand-100 text-brand-700 dark:bg-brand-900/70 dark:text-brand-200'
+              : 'bg-slate-100 text-slate-500 group-hover:text-brand-600 dark:bg-slate-800 dark:text-slate-400 dark:group-hover:text-brand-300'"
+          >
+            <UIcon :name="item.icon" class="size-4" />
+          </span>
+          <span class="min-w-0">
+            <span
+              class="block truncate text-sm font-medium"
+              :class="item.id === section.id
+                ? 'text-brand-800 dark:text-brand-200'
+                : 'text-slate-900 dark:text-white'"
+            >{{ item.label }}</span>
+            <span class="mt-0.5 hidden truncate text-[11px] text-slate-500 sm:block dark:text-slate-400">
+              {{ item.description }}
+            </span>
+          </span>
+        </NuxtLink>
+      </nav>
+
       <div
         class="grid gap-10"
         :class="isDoc
@@ -104,13 +154,16 @@ useSeoMeta({
       >
         <aside v-if="isDoc" class="hidden lg:block">
           <div class="sticky top-24">
-            <NuxtLink :to="localePath('/guide')" class="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
-              <UIcon name="i-lucide-book-open" class="size-4 text-brand-500" />
-              {{ t('docs-doc.sidebar') }}
+            <NuxtLink :to="localePath(section.path)" class="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
+              <UIcon :name="section.icon" class="size-4 text-brand-500" />
+              {{ sectionLabel }}
             </NuxtLink>
             <nav class="mt-6 space-y-5">
               <div v-for="group in groups" :key="group.key">
-                <p class="px-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <p
+                  v-if="showGroupTitles"
+                  class="px-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500"
+                >
                   {{ group.label }}
                 </p>
                 <ul class="mt-1.5 space-y-0.5">
@@ -149,7 +202,7 @@ useSeoMeta({
               {{ t('docs-doc.tocMobile') }}
             </summary>
             <ul class="mt-3 space-y-1 border-t border-slate-100 pt-3 dark:border-slate-800">
-              <li v-for="item in list" :key="item.path">
+              <li v-for="item in sectionItems" :key="item.path">
                 <NuxtLink
                   :to="localePath(item.path)"
                   class="block rounded-lg px-2 py-1.5 text-sm"
@@ -166,8 +219,8 @@ useSeoMeta({
               {{ t('docs-doc.home') }}
             </NuxtLink>
             <UIcon name="i-lucide-chevron-right" class="size-3" />
-            <NuxtLink v-if="isDoc" :to="localePath('/guide')" class="transition hover:text-brand-600 dark:hover:text-brand-300">
-              {{ t('docs-doc.sidebar') }}
+            <NuxtLink v-if="isDoc" :to="localePath(section.path)" class="transition hover:text-brand-600 dark:hover:text-brand-300">
+              {{ sectionLabel }}
             </NuxtLink>
             <UIcon v-if="isDoc" name="i-lucide-chevron-right" class="size-3" />
             <span class="text-slate-500 dark:text-slate-400">{{ doc.title }}</span>

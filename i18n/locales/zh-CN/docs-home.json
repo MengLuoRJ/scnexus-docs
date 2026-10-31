@@ -5,7 +5,6 @@
     "tagline": "专为星际社区服务的枢纽应用",
     "description": "为内容创作者提供更丰富的信息展示方式，为玩家提供战役安装、存档同步与作品管理的一站式入口。",
     "start": "快速开始",
-    "sponsor": "赞助支持",
     "featuresTitle": "应用功能",
     "featuresDesc": "围绕星际社区的内容创作与游玩体验构建",
     "features": {
@@ -27,21 +26,19 @@
       }
     },
     "entries": {
-      "guide": {
-        "title": "快速开始",
-        "details": "下载安装、启动游戏与加入社区"
+      "app": {
+        "title": "星际枢纽文档",
+        "details": "下载安装、战役与作品管理、设置与本地化"
+      },
+      "editor": {
+        "title": "编辑器文档",
+        "details": "银河编辑器制作流程与创作工具"
       },
       "reference": {
-        "title": "参考文档",
-        "details": "压缩安装包元数据标准与字段说明"
-      },
-      "patchnotes": {
-        "title": "更新日志",
-        "details": "各版本的更新与修正记录"
+        "title": "参考资料",
+        "details": "压缩包标准与 GitHub 安装源"
       }
     },
-    "viewDocs": "查看文档",
-    "communityTitle": "加入星际社区",
-    "communityDesc": "无论是使用中遇到问题，还是想参与翻译与贡献，都欢迎加入交流群或 Discord 服务器。"
+    "viewDocs": "查看文档"
   }
 }

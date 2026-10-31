@@ -34,8 +34,9 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
       link: [
         { rel: 'icon', href: '/favicon.ico' },
-        { rel: 'icon', type: 'image/png', sizes: '128x128', href: '/logo_scnexus_128.png' },
-        { rel: 'apple-touch-icon', sizes: '128x128', href: '/logo_scnexus_128.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       ],
       meta: [
         {
@@ -133,8 +134,8 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: [
-        '/', '/guide', '/reference', '/patchnotes', '/sponsor', '/privacy-policy', '/terms',
-        '/en', '/en/guide', '/en/reference', '/en/patchnotes', '/en/sponsor', '/en/privacy-policy', '/en/terms',
+        '/', '/guide', '/editor', '/reference',
+        '/en', '/en/guide', '/en/editor', '/en/reference',
         '/sitemap.xml',
       ],
     },

@@ -3,6 +3,12 @@
 
 @plugin "@tailwindcss/typography";
 
+/**
+ * 文档正文里的卡片等版式直接用工具类写在 markdown 中，
+ * Tailwind 默认不扫描 .md，必须显式声明，否则这些类不会生成。
+ */
+@source "../../../content";
+
 @theme static {
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
     "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
@@ -121,8 +127,14 @@ body {
   @apply rounded-md bg-slate-100 px-1.5 py-0.5 text-[0.875em] font-medium before:content-none after:content-none dark:bg-slate-800;
 }
 
+/**
+ * 没写语言的代码块（例如目录树）不会经过 Shiki 着色，取不到 token 颜色，
+ * 只能退回 typography 的 --tw-prose-pre-code（默认是浅色的 #e2e8f0），
+ * 而这里的背景又被改成浅底，结果就是浅灰字压浅灰底、几乎看不见。
+ * 所以显式声明一个正文色；Shiki 着色过的块由行内 span 自带颜色，不受影响。
+ */
 .prose :where(pre) {
-  @apply rounded-xl border border-slate-200 bg-slate-50 text-sm dark:border-slate-800 dark:bg-slate-900;
+  @apply rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200;
 }
 
 .prose :where(h2) {

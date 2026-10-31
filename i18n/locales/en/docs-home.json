@@ -5,7 +5,6 @@
     "tagline": "The hub built for the StarCraft community",
     "description": "Richer information for creators, and a single entry point for players: campaign installation, save sync and content management.",
     "start": "Quick start",
-    "sponsor": "Sponsor",
     "featuresTitle": "Features",
     "featuresDesc": "Built around creating and playing content in the StarCraft community",
     "features": {
@@ -27,21 +26,19 @@
       }
     },
     "entries": {
-      "guide": {
-        "title": "Quick start",
-        "details": "Download, install, launch the game and join the community"
+      "app": {
+        "title": "SCNexus Docs",
+        "details": "Install, campaigns, content management, settings and localization"
+      },
+      "editor": {
+        "title": "Editor Docs",
+        "details": "Galaxy Editor workflow and creation tools"
       },
       "reference": {
         "title": "Reference",
-        "details": "Package metadata standard and field descriptions"
-      },
-      "patchnotes": {
-        "title": "Changelog",
-        "details": "Updates and fixes for every release"
+        "details": "Package formats and GitHub install sources"
       }
     },
-    "viewDocs": "Read the docs",
-    "communityTitle": "Join the community",
-    "communityDesc": "Whether you need help or want to contribute translations, the chat group and the Discord server are both open."
+    "viewDocs": "Read the docs"
   }
 }

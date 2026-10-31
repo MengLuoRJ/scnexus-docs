@@ -8,8 +8,11 @@ withDefaults(defineProps<{ size?: 'sm' | 'md' }>(), { size: 'md' })
 <template>
   <NuxtLink :to="localePath('/')" class="group flex shrink-0 items-center gap-2.5" :aria-label="t('docs-basic.name')">
     <img
-      src="/logo.svg"
+      src="/logo-128.png"
       alt=""
+      width="128"
+      height="128"
+      decoding="async"
       class="transition duration-300 group-hover:scale-105"
       :class="size === 'sm' ? 'h-7 w-7' : 'h-9 w-9'"
     >

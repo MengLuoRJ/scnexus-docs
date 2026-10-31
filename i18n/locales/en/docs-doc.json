@@ -10,6 +10,7 @@
     "groups": {
       "start": "Getting started",
       "usage": "Guides",
+      "contribute": "Contributing",
       "reference": "Reference"
     },
     "fallbackNotice": "This page is not available in English yet. Showing the Chinese version below.",

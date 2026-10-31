@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const localePath = useLocalePath()
 const year = new Date().getFullYear()
 </script>
 
@@ -8,19 +7,7 @@ const year = new Date().getFullYear()
   <footer class="border-t border-slate-200 bg-slate-50/60 dark:border-slate-800 dark:bg-slate-950">
     <UContainer class="py-10">
       <div class="flex flex-col items-center gap-1 text-center text-sm">
-        <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-slate-500 dark:text-slate-400">
-          <NuxtLink :to="localePath('/terms')" class="transition hover:text-brand-600 dark:hover:text-brand-300">{{ t('docs-basic.footer.terms') }}</NuxtLink>
-          <NuxtLink :to="localePath('/privacy-policy')" class="transition hover:text-brand-600 dark:hover:text-brand-300">{{ t('docs-basic.footer.privacy') }}</NuxtLink>
-          <NuxtLink :to="localePath('/sponsor')" class="transition hover:text-brand-600 dark:hover:text-brand-300">{{ t('docs-basic.footer.sponsor') }}</NuxtLink>
-          <a
-            href="https://github.com/MengLuoRJ/scnexus"
-            target="_blank"
-            rel="noopener"
-            class="transition hover:text-brand-600 dark:hover:text-brand-300"
-          >{{ t('docs-basic.footer.repo') }}</a>
-        </div>
-
-        <p class="mt-3 text-slate-600 dark:text-slate-300">
+        <p class="text-slate-600 dark:text-slate-300">
           Copyright © 2023-{{ year }} SCNexus
         </p>
         <p class="text-slate-500 dark:text-slate-400">

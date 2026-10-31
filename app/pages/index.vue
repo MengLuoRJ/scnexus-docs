@@ -19,12 +19,12 @@ function def(key: 'info' | 'review' | 'campaign' | 'cloud') {
 }
 
 const entries = computed(() => [
-  { to: '/guide', icon: 'i-lucide-rocket', ...entry('guide') },
-  { to: '/reference/metadata', icon: 'i-lucide-file-json', ...entry('reference') },
-  { to: '/patchnotes', icon: 'i-lucide-history', ...entry('patchnotes') },
+  { to: '/guide', icon: 'i-lucide-rocket', ...entry('app') },
+  { to: '/editor', icon: 'i-lucide-pen-tool', ...entry('editor') },
+  { to: '/reference', icon: 'i-lucide-book-marked', ...entry('reference') },
 ])
 
-function entry(key: 'guide' | 'reference' | 'patchnotes') {
+function entry(key: 'app' | 'editor' | 'reference') {
   return {
     title: t(`docs-home.entries.${key}.title`),
     details: t(`docs-home.entries.${key}.details`),
@@ -67,14 +67,6 @@ useSeoMeta({
 
           <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
             <UButton :to="localePath('/guide')" size="lg" icon="i-lucide-rocket" :label="t('docs-home.start')" />
-            <UButton
-              :to="localePath('/sponsor')"
-              size="lg"
-              color="neutral"
-              variant="outline"
-              icon="i-lucide-heart"
-              :label="t('docs-home.sponsor')"
-            />
             <UButton
               to="https://github.com/MengLuoRJ/scnexus"
               target="_blank"
@@ -140,39 +132,6 @@ useSeoMeta({
               <UIcon name="i-lucide-arrow-right" class="size-3.5" />
             </span>
           </NuxtLink>
-        </div>
-      </UContainer>
-    </section>
-
-    <section class="pb-24">
-      <UContainer>
-        <div class="rounded-3xl bg-slate-900 px-8 py-12 text-center dark:bg-slate-900">
-          <h2 class="text-2xl font-semibold text-white">{{ t('docs-home.communityTitle') }}</h2>
-          <p class="mx-auto mt-3 max-w-xl text-sm text-slate-300">
-            {{ t('docs-home.communityDesc') }}
-          </p>
-          <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <UButton
-              to="https://discord.gg/U6EbQKdkH2"
-              target="_blank"
-              rel="noopener"
-              color="neutral"
-              variant="solid"
-              icon="i-simple-icons-discord"
-              label="Discord"
-              class="bg-white text-slate-900 hover:bg-slate-100"
-            />
-            <UButton
-              to="https://qm.qq.com/cgi-bin/qm/qr?k=IgP5DkVYkL-VlgMPESNmRaPiYFCQLrNI&jump_from=webapi&authKey=IH1aC/1uFvcRC43U2h3R4Ms2YhbMg082p4RTMSV4GHZSRmfIyLjJodIwwf8wAdL4"
-              target="_blank"
-              rel="noopener"
-              color="neutral"
-              variant="outline"
-              icon="i-lucide-users"
-              label="QQ 857601125"
-              class="border-white/25 text-white hover:bg-white/10"
-            />
-          </div>
         </div>
       </UContainer>
     </section>

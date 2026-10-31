@@ -14,7 +14,7 @@ const docSchema = z.object({
   title: z.string(),
   description: z.string().default(''),
   order: z.number().default(99),
-  group: z.enum(['start', 'usage', 'reference']).default('usage'),
+  group: z.enum(['start', 'usage', 'contribute', 'reference']).default('usage'),
   updated: z.string().default(''),
 })
 
@@ -38,10 +38,16 @@ function collection(name: string, locale: string, sources: { include: string, pr
   ] as const
 }
 
-/** 栏目文档（进侧栏，按 group + order 排序）与独立页面（更新日志、法务、赞助等） */
+/**
+ * 栏目文档（进侧栏，按 group + order 排序）与独立页面（更新日志、法务、赞助等）。
+ *
+ * 文档按三个大板块分目录，目录与站点路径一一对应（见 app/utils/doc-sections.ts）：
+ * `guide` = 星际枢纽文档、`editor` = 编辑器文档、`reference` = 参考资料。
+ */
 const collections = Object.fromEntries(LOCALES.flatMap(locale => [
   collection('docs', locale, [
     { include: 'guide/**/*.md', prefix: '/guide' },
+    { include: 'editor/**/*.md', prefix: '/editor' },
     { include: 'reference/**/*.md', prefix: '/reference' },
   ]),
   collection('pages', locale, [{ include: '*.md', prefix: '/' }]),

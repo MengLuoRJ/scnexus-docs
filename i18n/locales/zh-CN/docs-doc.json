@@ -10,6 +10,7 @@
     "groups": {
       "start": "开始使用",
       "usage": "使用指南",
+      "contribute": "开发贡献",
       "reference": "参考文档"
     },
     "fallbackNotice": "此页暂无中文版本，以下显示英文版本。",

@@ -18,8 +18,8 @@ export default defineEventHandler(async (event) => {
     queryCollection(event, 'pages_en').all(),
   ])
 
-  /** 两种语言都存在的页面：首页与栏目 */
-  const SHELL = ['/', '/guide', '/patchnotes', '/sponsor', '/privacy-policy', '/terms']
+  /** 两种语言都存在的页面：首页与三个板块入口 */
+  const SHELL = ['/', '/guide', '/editor', '/reference']
 
   const collect = (docs: typeof docsZh, pages: typeof pagesZh) => {
     const paths = new Set<string>(SHELL)

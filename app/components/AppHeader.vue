@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import { DOC_SECTIONS } from '~/utils/doc-sections'
+
 const { t, locale, defaultLocale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 const navOpen = ref(false)
 
-const items = computed(() => [
-  { label: t('docs-basic.nav.guide'), to: '/guide' },
-  { label: t('docs-basic.nav.reference'), to: '/reference' },
-  { label: t('docs-basic.nav.patchnotes'), to: '/patchnotes' },
-  { label: t('docs-basic.nav.sponsor'), to: '/sponsor' },
-])
+/** 顶栏只放文档的三个大板块：更新日志与赞助支持由主站承担，文档站不再重复入口 */
+const items = computed(() => DOC_SECTIONS.map(section => ({
+  label: t(`docs-basic.sections.${section.id}.nav`),
+  to: section.path,
+})))
 
 function isActive(to: string) {
   // 英文站在 /en/... 下，激活态按去掉语言前缀后的路径判断

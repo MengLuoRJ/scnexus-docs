@@ -1,7 +1,3 @@
-# SponsorKit
-
-app/assets/sponsorkit/.cache.json
-
 # Nuxt build output
 .nuxt
 .output
@@ -30,6 +26,9 @@ dist-ssr
 dist-electron
 release
 *.local
+
+# 本地工具/会话状态（不属于构建产物，但也不必入库）
+.workbuddy
 
 # Editor directories and files
 .vscode/.debug.env

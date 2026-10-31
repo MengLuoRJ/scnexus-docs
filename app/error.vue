@@ -49,7 +49,7 @@ function goHome() {
       <div class="pointer-events-none absolute left-1/2 top-1/3 size-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/10 blur-3xl" />
 
       <div class="relative">
-        <img src="/logo.svg" alt="" class="mx-auto size-14 opacity-90">
+        <img src="/logo-128.png" alt="" width="128" height="128" class="mx-auto size-14 opacity-90">
         <p class="mt-8 font-mono text-sm font-medium text-brand-600 dark:text-brand-400">
           {{ error?.statusCode ?? 500 }}
         </p>
