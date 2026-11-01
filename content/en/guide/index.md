@@ -35,7 +35,7 @@ Importing, installing, activating and uninstalling campaigns, installing and lau
 ## Getting the app
 
 <div class="not-prose my-6 grid gap-4 sm:grid-cols-2">
-  <a href="https://release.scnexus.net/stable/latest" style="text-decoration:none" class="flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-lg hover:shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-brand-700">
+  <a href="https://release.scnexus.net/desktop/stable/latest" style="text-decoration:none" class="flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-lg hover:shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-brand-700">
     <span class="flex items-center justify-between gap-3">
       <span class="text-[11px] font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-300">Direct download</span>
       <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Windows x64</span>
